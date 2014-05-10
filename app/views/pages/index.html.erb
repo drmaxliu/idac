@@ -1,0 +1,86 @@
+<center>
+<h3>
+幼兒智力發展評估
+</h3>
+<h3>
+Intelligence Development Accessment for Children
+</h3>
+
+<p>姓名: <input type="text" name="fname" id="tester" /></p>
+
+
+<h3 id="test_group">
+1. 聲音記憶測驗: 
+</h3>
+<div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description">
+<p>
+<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
+	<ol style="text-align:left;">
+		<li>請按試聼鍵，調整音量至合適。</li>
+		<img src="/icon_test.jpg" style="width: 100px; height: 100px;" onclick="testAudio(this);">
+		<li>請按試錄鍵，確定你的聲音可以錄進。</li>
+		<img src="/icon_microphone.png" style="width: 100px; height: 100px;" onclick="testRecord(this);">
+		<li>請按開始鍵，題目即開始播出。</li>
+		<li>題目播完後，綠燈會亮起，請按錄音鍵，回答你剛剛聽見的數字。</li>
+		<li>回答結束後，請再按錄音鍵即結束，測驗就會自動進入下一題。</li>
+	</ol>
+</p>
+</div>
+
+<h4 id="test_item">第1題</h4>
+
+<div style="border: 3px double #000000;padding:3px;width:500px;" id="test_buttons">
+	<img src="/icon_start.png" style="width: 85px; height: 85px;" onclick="startTest(this);">
+	<img id="record" src="/icon_record.jpg" style="width: 100px; height: 100px;" onclick="startRecording(this);">
+	<img id="stop" src="/icon_stop.jpg" style="width: 100px; height: 100px;" onclick="stopRecording(this);">
+	<a id="save" href="#"><img src="/icon_next.jpg" style="width: 100px; height: 100px;"></a>
+</div>
+
+<hr>
+
+<div id="audio">
+	<div id="viz">
+		<canvas id="analyser" width="800" height="500"></canvas>
+		<canvas id="wavedisplay" width="800" height="500"></canvas>
+	</div>
+
+</div>
+
+</center>
+
+<p>
+Hello! 1
+</p>
+<p>
+Hello! 2
+</p>
+<p>
+Hello! 3
+</p>
+<p>
+Hello! 4
+</p>
+<p>
+Hello! 1
+</p>
+<p>
+Hello! 2
+</p>
+<p>
+Hello! 3
+</p>
+<p>
+Hello! 4
+</p>
+<p>
+Hello! 1
+</p>
+<p>
+Hello! 2
+</p>
+<p>
+Hello! 3
+</p>
+<p>
+Hello! 4
+</p>
