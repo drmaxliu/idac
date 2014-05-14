@@ -1,0 +1,58 @@
+<%= form_for(@tester) do |f| %>
+  <% if @tester.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tester.errors.count, "error") %> prohibited this tester from being saved:</h2>
+
+      <ul>
+      <% @tester.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :total_score %><br />
+    <%= f.number_field :total_score %>
+  </div>
+  <div class="field">
+    <%= f.label :test_date %><br />
+    <%= f.datetime_select :test_date %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %><br />
+    <%= f.datetime_select :birthday %>
+  </div>
+  <div class="field">
+    <%= f.label :sub_score_1 %><br />
+    <%= f.number_field :sub_score_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :sub_score_2 %><br />
+    <%= f.number_field :sub_score_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :sub_score_3 %><br />
+    <%= f.number_field :sub_score_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :sub_score_4 %><br />
+    <%= f.text_field :sub_score_4 %>
+  </div>
+  <div class="field">
+    <%= f.label :sub_score_5 %><br />
+    <%= f.number_field :sub_score_5 %>
+  </div>
+  <div class="field">
+    <%= f.label :sub_score_6 %><br />
+    <%= f.number_field :sub_score_6 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

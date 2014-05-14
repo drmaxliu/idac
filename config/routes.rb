@@ -1,5 +1,15 @@
 Idac::Application.routes.draw do
 
+  devise_for :users
+
+  resources :users do
+    resources :tester_answers
+  end
+
+  resources :questions
+
+  resources :testers
+
   root :to => 'pages#index'
   
   # The priority is based upon order of creation:

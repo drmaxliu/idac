@@ -6,7 +6,19 @@
 Intelligence Development Accessment for Children
 </h3>
 
-<p>姓名: <input type="text" name="fname" id="tester" /></p>
+<div>
+	<% if user_signed_in? %>
+		 <span id="user_name"><%= current_user.name %> 您好!</span>
+		<%= link_to "登出", destroy_user_session_path, method: :delete, :id => "user_logout" %>
+	<% else %>
+	  <%= link_to "登入", new_user_session_path, :id => "user_login" %> | 
+	  <%= link_to "註冊", new_user_registration_path, :id => "user_registeration" %>
+	<% end %>
+</div>
+
+<% if user_signed_in? %> user signed in
+<% else %> user not signed in
+<% end %>
 
 
 <h3 id="test_group">

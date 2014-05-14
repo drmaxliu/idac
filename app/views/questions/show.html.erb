@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Content:</b>
+  <%= @question.content %>
+</p>
+
+<p>
+  <b>Choices:</b>
+  <%= @question.choices %>
+</p>
+
+<p>
+  <b>Answer:</b>
+  <%= @question.answer %>
+</p>
+
+<p>
+  <b>Difficulty:</b>
+  <%= @question.difficulty %>
+</p>
+
+<p>
+  <b>Std error:</b>
+  <%= @question.std_error %>
+</p>
+
+<p>
+  <b>Discrimination:</b>
+  <%= @question.discrimination %>
+</p>
+
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

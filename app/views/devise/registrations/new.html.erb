@@ -1,0 +1,62 @@
+<h2>請填寫你的基本資料：</h2>
+
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  	<%= f.input :name %>
+    <%= f.input :email, :required => true, :autofocus => true %>
+    <%= f.input :password, :required => true %>
+    <%= f.input :password_confirmation, :required => true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "註冊" %>
+  </div>
+<% end %>
+
+<% @tester = User.new %>
+<% current_year = Date.current.year %>
+
+<%= form_for(@tester) do |f| %>
+  <% if @tester.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tester.errors.count, "error") %> prohibited this tester from being saved:</h2>
+
+      <ul>
+      <% @tester.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "測試者姓名" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.label :email, "測試者郵箱（必填）" %><br />
+  <%= f.text_field :email, :required => true, :autofocus => true %>
+
+  <%= f.label :password, "密碼（必填）" %><br />
+  <%= f.text_field :password, :required => true %>
+
+  <%= f.label :password_confirmation, "再填密碼" %><br />
+  <%= f.text_field :password_confirmation, :required => true %>
+
+
+  <div class="field">
+    <%= f.label :test_date, "設定測試日期" %><br />
+    <%= f.date_select :test_date, :start_year => 2014 %>
+  </div>
+  <div class="field">
+    <%= f.label :bot, "設定生日" %><br />
+    <%= f.date_select :bot, :start_year => (current_year-10), :end_year => (current_year-3) %>
+  </div>
+  <div class="actions">
+    <%= f.submit "完成送出", class: "btn btn-min btn-warning" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

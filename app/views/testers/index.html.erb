@@ -1,0 +1,41 @@
+<h1>Listing testers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Total score</th>
+    <th>Test date</th>
+    <th>Birthday</th>
+    <th>Sub score 1</th>
+    <th>Sub score 2</th>
+    <th>Sub score 3</th>
+    <th>Sub score 4</th>
+    <th>Sub score 5</th>
+    <th>Sub score 6</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @testers.each do |tester| %>
+  <tr>
+    <td><%= tester.name %></td>
+    <td><%= tester.total_score %></td>
+    <td><%= tester.test_date %></td>
+    <td><%= tester.birthday %></td>
+    <td><%= tester.sub_score_1 %></td>
+    <td><%= tester.sub_score_2 %></td>
+    <td><%= tester.sub_score_3 %></td>
+    <td><%= tester.sub_score_4 %></td>
+    <td><%= tester.sub_score_5 %></td>
+    <td><%= tester.sub_score_6 %></td>
+    <td><%= link_to 'Show', tester %></td>
+    <td><%= link_to 'Edit', edit_tester_path(tester) %></td>
+    <td><%= link_to 'Destroy', tester, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tester', new_tester_path %>

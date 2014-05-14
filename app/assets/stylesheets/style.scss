@@ -1,0 +1,94 @@
+$navbarBackgroundHighlight: white;
+$navbarBackground: white;
+
+
+@import 'bootstrap';
+
+
+body {
+	margin-top: 80px;
+	margin-bottom: 20px;
+}
+
+.footer {
+	background-color: #ccccff;
+}
+
+.table tbody {
+  border-top: 2px solid #000000;
+}
+
+
+.btn-custom-darken.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+.btn-custom-darken {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #e33bd3;
+  background-image: -moz-linear-gradient(top, #e64dd7, #e020cd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e64dd7), to(#e020cd));
+  background-image: -webkit-linear-gradient(top, #e64dd7, #e020cd);
+  background-image: -o-linear-gradient(top, #e64dd7, #e020cd);
+  background-image: linear-gradient(to bottom, #e64dd7, #e020cd);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe64dd7', endColorstr='#ffe020cd', GradientType=0);
+  border-color: #e020cd #e020cd #9d1690;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #e020cd;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-custom-darken:hover,
+.btn-custom-darken:focus,
+.btn-custom-darken:active,
+.btn-custom-darken.active,
+.btn-custom-darken.disabled,
+.btn-custom-darken[disabled] {
+  color: #ffff88;
+  background-color: #e020cd;
+  *background-color: #ca1cb9;
+}
+.btn-custom-darken:active,
+.btn-custom-darken.active {
+  background-color: #b419a5 ;
+}
+
+.btn-green-darken.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+.btn-green-darken {
+  color: #888888;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #59f656;
+  background-image: -moz-linear-gradient(top, #6cf769, #3df439);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6cf769), to(#3df439));
+  background-image: -webkit-linear-gradient(top, #6cf769, #3df439);
+  background-image: -o-linear-gradient(top, #6cf769, #3df439);
+  background-image: linear-gradient(to bottom, #6cf769, #3df439);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6cf769', endColorstr='#ff3df439', GradientType=0);
+  border-color: #3df439 #3df439 #10d50b;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #3df439;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-green-darken:hover,
+.btn-green-darken:focus,
+.btn-green-darken:active,
+.btn-green-darken.active,
+.btn-green-darken.disabled,
+.btn-green-darken[disabled] {
+  color: #cccc66s;
+  background-color: #3df439;
+  *background-color: #25f320;
+}
+.btn-green-darken:active,
+.btn-green-darken.active {
+  background-color: #11ed0d ;
+}
+
+@import 'bootstrap-responsive';
