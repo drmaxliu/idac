@@ -1,0 +1,40 @@
+<h3>已註冊受測者：</h3>
+
+<table class="table table-striped">
+		<thead>
+	  <tr>
+	    <th>姓名</th>
+	    <th>生日</th>
+	    <th>生日</th>
+	    <th>測試區段</th>
+	    <th>聯係人</th>
+	    <th>背景資料</th>
+	    <th>受測日期</th>
+	    <th>總分</th>
+	    <th></th>
+	    <th></th>
+	    <th></th>
+	  </tr>
+	  </thead>
+		
+	<tbody>
+	
+	<% @users.each do |u| %>
+	  <tr>
+	    <td><%= u.name %></td>
+	    <td><%= u.bot %></td>
+	    <td><%= u.level %></td>
+	    <td><%= u.school %></td>
+	    <td><%= u.contact %></td>
+	    <td><%= u.description %></td>
+	    <td><%= u.test_date %></td>
+	    <td><%= u.total_score %></td>
+	    <td><%= link_to 'Show', u %></td>
+	    <td><%= link_to 'Edit', edit_user_path(u) %></td>
+	    <td><%= link_to 'Destroy', u, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  </tr>
+	<% end %>
+
+	</tbody>
+</table>
+

@@ -1,15 +1,26 @@
-<h2>Sign in</h2>
+<center>
+
+<h3>
+幼兒智力發展評估
+</h3>
+<h3>
+Intelligence Development Accessment for Children
+</h3>
+
+<p></p>
+
+<h3>
+請先登入
+</h3>
 
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
-  </div>
+	<%= f.label :email, "郵箱", style: "display:inline-block; font-size:20px; font-weight:bold;" %> <%= f.text_field :email %></br>
+	<%= f.label :password, "密碼", style: "display:inline-block; font-size:20px; font-weight:bold;" %> <%= f.password_field :password %></br>
+	<%= f.submit "登入", class: "btn btn-min btn-primary" %>
+
 <% end %>
 
-<%= render "devise/shared/links" %>
+</center>
+
+<%-# render "devise/shared/links" -%>

@@ -1,0 +1,10 @@
+<%= form_for([current_user, @ta]) do |f| %>
+  <div class="field">
+    <%= f.label :answer %>
+    <%= f.text_area :answer, :id => 'tester_answer' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存", :class => 'btn btn-min btn-primary' %>
+  </div>
+<% end %>

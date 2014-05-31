@@ -13,6 +13,16 @@
    limitations under the License.
 */
 
+var video_handle;
+
+function playVid() { 
+    video_handle.play(); 
+} 
+
+function pauseVid() { 
+    video_handle.pause(); 
+} 
+
 // initialize audioContext for audio stream
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioContext = new AudioContext();
@@ -26,12 +36,6 @@ var rafID = null;
 var analyserContext = null;
 var canvasWidth, canvasHeight;
 var recIndex = 0;
-
-/* TODO:
-
-- offer mono option
-- "Monitor input" switch
-*/
 
 // not in use ...
 function saveAudio() {
@@ -51,10 +55,10 @@ function gotBuffers( buffers ) {
 }
 
 function doneEncoding( blob ) {
-    Recorder.setupDownload( blob, "myRecording" + ((recIndex<10)?"0":"") + recIndex + ".wav" );
-    recIndex++;
-    alert(tester);
+    var ud = document.getElementById('user_data');
 
+    Recorder.setupDownload( blob, ud.innerHTML + ((recIndex<10)?"0":"") + recIndex + ".wav" );
+    recIndex++;
 }
 
 // recording controls: stop or start
@@ -217,7 +221,10 @@ function initAudio() {
             console.log(e);
         });
 
+        video_handle = document.getElementById("video_interfere"); 
+
+
 }
 
 // call initAudio after the page is loaded
-window.addEventListener('load', initAudio );
+// window.addEventListener('load', initAudio );

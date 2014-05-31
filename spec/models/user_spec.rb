@@ -28,6 +28,9 @@
 #  contact                :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  status                 :integer
+#  level                  :integer
+#  answer                 :text
 #
 
 require 'spec_helper'

@@ -28,6 +28,9 @@
 #  contact                :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  status                 :integer
+#  level                  :integer
+#  answer                 :text
 #
 
 class User < ActiveRecord::Base
@@ -38,7 +41,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :bot, :test_date, :total_score, :description, :school, :contact
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :bot, :test_date, :total_score, :description, :school, :contact, :status, :level, :answer
   # attr_accessible :title, :body
 
   has_many :tester_answers, dependent: :destroy
