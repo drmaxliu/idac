@@ -53,7 +53,9 @@ Intelligence Development Accessment for Children
 </div>
 
 <div id='tester_answer_submit'>
-<%= render 'tester_answer' %>
+<% if user_signed_in? %>
+	<%= render 'tester_answer' %>
+<% end %>
 </div>
 
 
