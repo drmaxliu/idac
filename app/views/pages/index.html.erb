@@ -9,17 +9,44 @@ Intelligence Development Accessment for Children
 聲音記憶與操作測驗，空間記憶與操作測驗，概念認知測驗，情緒認知測驗
 </h4>
 
-<p></p>
-
-
-
+<p>
+<span id="show_logout"><u>想要登出</u> | </span>
+<span id="hide_logout"><u>隱藏登出</u> | </span> 
+<span id="show_instruction"><u>顯示指示</u></span>
+<span id="hide_instruction"><u>隱藏指示</u></span>
+</p>
 
 <div id="welcome" style="border: 3px double #000000; padding:3px; width:500px;">
 	<h3 id="welcome_text_1"></h3>
 </div>
 
+<p></p>
 
+<div id="test_start" style="width:620px;">
+	<% if user_signed_in? %>
+		<% if current_user.tester_answers.count == 0 %>
+			<% @ta = current_user.tester_answers.create(score: 100) %>
+		<% else %>
+			<% @ta = current_user.tester_answers.first %>
+		<% end %>
 
+		<div class="bs-callout bs-callout-warning">
+			<h4><span id="user_name"><%= current_user.name %> 您好!</span></h4>
+			<%= link_to "登出", destroy_user_session_path, method: :delete, :id => "user_logout", class: "btn btn-min" %>
+		</div>
+	<% else %>
+		
+		<div class="bs-callout bs-callout-warning">
+		  <h4>如果已經註冊，請先：</h4><%= link_to "登入", new_user_session_path, :id => "user_login", class: "btn btn-min" %>
+		 </div>
+
+	  <div class="bs-callout bs-callout-info">
+	  	<h4>如果尚未註冊，請填寫：</h4>
+	  	<%= render 'tester_registration', :id => "new_registration" %>
+	  </div>
+
+	<% end %>
+</div>
 
 <h3 id="test_group_1r">
 1A. 聲音記憶測驗: 

@@ -32,10 +32,20 @@ $(document).ready(function() {
   $('#video_end_handle').hide();
   $('#show_instruction').hide();
   $('#hide_instruction').hide();
+  $('#hide_logout').hide();
+  $('#show_logout').hide();
+
   $('#test_buttons').hide();
   $('#tester_answer').hide();
   $('#tester_answer_submit').hide();
   $('#welcome').show();
+
+  $('#user_test_date_1i').css('width', "70px");
+  $('#user_test_date_2i').css('width', "70px");
+  $('#user_test_date_3i').css('width', "70px");
+  $('#user_bot_1i').css('width', "70px");
+  $('#user_bot_2i').css('width', "70px");
+  $('#user_bot_3i').css('width', "70px");
 
   var level;
   var status;
@@ -328,13 +338,12 @@ $(document).ready(function() {
 
       $('#show_instruction').hide();
       $('#hide_instruction').show();
+      $('#show_logout').show();
+      $('#hide_logout').hide();
+      $('#test_start').hide();
 
       $('#answer_alert').show();
       $('#alert_message').html('請按[練習鍵]或[往下鍵]開始。');
-
-      // hide logout 
-      $('#hide_logout').hide();
-      $('#test_start').hide();
     } else {
       exercise_mode = true;
       group_idx = parseInt(status);
