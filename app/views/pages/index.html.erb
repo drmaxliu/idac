@@ -374,6 +374,299 @@ Intelligence Development Accessment for Children
 	</p>
 </div>
 
+<h3 id="test_group_5a">
+5A. 具體概念測驗: 
+</h3>
+
+<div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_5a">
+	<p>
+	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
+		<ol style="text-align:left;">
+			<li>每個題目會給出一個東西，和與這個東西最接近的三個概念。</li>
+			<li>請選擇與題目的東西，概念最接近的選項。</li>
+			<li>聼説明請按以下[說明鍵]。</li>
+			<img id="group_5a_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
+			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
+			<img class="play_exer" id="group_5a_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
+			<li>按以下的[往下鍵]可以直接開始作答。</li>
+			<img class="play_test" id="group_5a_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+		</ol>
+	</p>
+</div>
+
+<h3 id="test_group_5b">
+5B. 抽象概念測驗: 
+</h3>
+
+<div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_5b">
+	<p>
+	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
+		<ol style="text-align:left;">
+			<li>每個題目會給出一個東西，和與這個東西最接近的三個概念。</li>
+			<li>請選擇與題目的東西，概念最接近的選項。</li>
+			<li>聼説明請按以下[說明鍵]。</li>
+			<img id="group_5b_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
+			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
+			<img class="play_exer" id="group_5b_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
+			<li>按以下的[往下鍵]可以直接開始作答。</li>
+			<img class="play_test" id="group_5b_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+		</ol>
+	</p>
+</div>
+
+<h3 id="test_group_6">
+6. 情緒概念測驗: 
+</h3>
+
+<div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_6">
+	<p>
+	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
+		<ol style="text-align:left;">
+			<li>每個題目即會播一段話。</li>
+			<li>聲音結束后，會出現綠燈。根據音調，選擇與感受最接近的情緒選項。</li>
+			<li>聼説明請按以下[說明鍵]。</li>
+			<img id="group_6_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
+			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
+			<img class="play_exer" id="group_6_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
+			<li>按以下的[往下鍵]可以直接開始作答。</li>
+			<img class="play_test" id="group_6_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+		</ol>
+	</p>
+</div>
+
+<audio id="audio_play_q">
+  <source src="/p2a_e1.wav" type="audio/wav">
+  Your browser does not support this audio format.
+</audio>
+
+<audio id="audio_play_a">
+  <source src="/p2a_a1.wav" type="audio/wav">
+  Your browser does not support this audio format.
+</audio>
+
+
+<%-# recording controls -%>
+<div style="border: 3px double #000000;padding:3px;width:500px;" id="record_buttons">
+	<img id="record" src="/icon_microphone.png" style="width: 100px; height: 100px;" onclick="startRecording(this);">
+	<img id="stop" src="/icon_stop.jpg" style="width: 100px; height: 100px;" onclick="stopRecording(this);">
+	<a id="save" href="#"><img src="/icon_save.jpg" style="width: 100px; height: 100px;" onclick=""></a>
+</div>
+
+<h4 id="test_item">第1題</h4>
+
+<div style="border: 3px double #000000;padding:3px;width:500px;" id="test_buttons">
+	<img id="a2" src="/flash_start.gif" style="width: 100px; height: 100px;">
+	<img id="yellow" src="/icon_yellow.png" style="width: 100px; height: 100px;">
+	<img id="green" src="/icon_green.jpg" style="width: 100px; height: 100px;">
+	<img id="answer" src="/icon_answer.jpg" style="width: 120px; height: 120px;">
+	<img id="response" src="/flash_response.gif" style="width: 120px; height: 120px;">
+	<img id="exer" src="/flash_exer.gif" style="width: 120px; height: 120px;">
+	<img id="next" src="/flash_next.gif" style="width: 100px; height: 100px;">
+</div>
+
+<div style="border: 3px double #000000;padding:3px;width:500px;" id="record_alert">
+	<p style="color: #ff0000;font-size:32px;font-weight:bold;"><blink>請錄音，結束后按[往下鍵]</blink></p>
+	<img src="/flash_record.gif" style="width: 100px; height: 100px;">
+</div>
+
+
+<div id="player"></div>
+
+<script>
+  // 1. This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // 2. This function creates an <iframe> (and YouTube player)
+  //    after the API code downloads.
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '480',
+      width: '640',
+      videoId: 'BP--0Z-tmNk',
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  // 3. The API will call this function when the video player is ready.
+  function onPlayerReady(event) {
+   
+    // player.loadVideoById({'videoId': 'dleOLKzcsko', 'startSeconds': 5, 'endSeconds': 60, 'suggestedQuality': 'large'});
+    // player.loadVideoById({'videoId': 'BP--0Z-tmNk'});
+    player.pauseVideo();
+    $('#player').hide();
+    // event.target.playVideo();
+
+  }
+
+  // 4. The API calls this function when the player's state changes.
+  //    The function indicates that when playing a video (state=1),
+  //    the player should play for six seconds and then stop.
+  var done = false;
+
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING) {
+      setTimeout(stopVideo, 30000); // set up video player time
+      // done = true;
+    }
+  }
+
+  function stopVideo() {
+  	player.stopVideo();
+  	$('#player').hide();
+  	
+  	// test control handling after video end
+  	$('#green').css('opacity', 1);
+    $('#yellow').hide();
+
+    vh = $('#video_end_handle').html();
+    vv = vh.split('/');
+    in_exercise = (vv[0]=='1');
+
+    gid = vv[2];
+
+    // show alert to record (groups 1 and 2) or to answer (others)
+    if(gid[0]=='1' || gid[0]=='2') $('#record_alert').show();
+    else $('#answer_alert').show();
+
+    $('#test_item').show();
+    $('#test_group_' + vv[2]).show();
+
+    if(gid[0]=='3' || gid[0]=='4') $('#test_content_3a4').show();
+    else $('#test_content_' + vh[0]).show();
+
+    if(in_exercise) $('#answer').show(); 
+    else $('#answer').hide();
+
+    if(gid[0]=='3' || gid[0]=='4') $('#answer_for_3a4').show();
+
+    if(gid[0]=='1' || gid[0]=='2') {
+    	$('#next').show();
+    }
+    else {
+    	$('#next').hide(); // no display until the answer to the question is given
+    	$('#response').hide();
+      $('#alert_message').html('請在正確圖形處觸碰。');
+    }
+
+    $('#test_buttons').show();
+  }
+
+  function playVideo() {
+  	player.playVideo();
+  }
+
+  function load2playVideo(videoID) {
+  	player.loadVideoById({'videoId': videoID, 'startSeconds': 5, 'endSeconds': 45, 'suggestedQuality': 'large'});
+  	player.playVideo();
+  	$('#player').show();
+  	$('#test_item').hide();
+  }
+
+</script>
+
+
+<div style="border: 3px double #000000;padding:3px;width:500px;" id="answer_alert">
+	<p style="color: #ff0000;font-size:32px;font-weight:bold;" id="alert_message">請選擇答案</p>
+</div>
+
+<div id="test_content_3a4">
+
+	<div id="test_for_3a4" style="width:110px">
+		<canvas id="canvas_for_test" width="100" height="100" style="border:1px solid #000000;">
+		</canvas>
+	</div>
+
+	<div id="answer_for_3a4">
+		<h4 id="test_answer_group_3a4">選擇同樣圖形：</h4>
+
+		<div style="width:110px; display:inline-block;">
+			<canvas id="canvas_for_answer_1" width="100" height="100" style="border:1px solid #000000;" style="display:inline-block;">
+			</canvas>
+		</div>
+
+		<div style="width:110px; display:inline-block;">
+			<canvas id="canvas_for_answer_2" width="100" height="100" style="border:1px solid #000000;" style="display:inline-block;">
+			</canvas>
+		</div>
+
+		<div style="width:110px; display:inline-block;">
+			<canvas id="canvas_for_answer_3" width="100" height="100" style="border:1px solid #000000;" style="display:inline-block;">
+			</canvas>
+		</div>
+
+		<div style="width:110px; display:inline-block;">
+			<canvas id="canvas_for_answer_4" width="100" height="100" style="border:1px solid #000000;" style="display:inline-block;">
+			</canvas>
+		</div>
+
+	</div>
+
+</div>
+
+
+<div id="test_content_5">
+	<div style="border: 3px double #000000; padding:3px; width:500px;">
+		<img id="q5_img" src="/icon_yellow.png" style="width: 100px; height: 100px;">
+		<p style="color: #000000;font-size:20px;font-weight:bold;" id="q5_text">subject</p>
+	</div>
+	<p></p>
+	<p style="color: #ff0000;font-size:28px;font-weight:bold;" id="q5_message">請從以下選出與以上題目最合適的概念</p>
+	<p></p>
+	<div id="choices_5">
+		<div style="border: 3px double #000000; padding:3px; width:120px; display:inline-block;">
+			<img id="q5_img_1" src="/icon_yellow.png" style="width: 100px; height: 100px;">
+			<p style="color: #000000;font-size:20px;font-weight:bold;" id="q5_text_1">object 1</p>
+		</div>
+		<div style="border: 3px double #000000; padding:3px; width:120px; display:inline-block;">
+			<img id="q5_img_2" src="/icon_yellow.png" style="width: 100px; height: 100px;">
+			<p style="color: #000000;font-size:20px;font-weight:bold;" id="q5_text_2">object 2</p>
+		</div>
+		<div style="border: 3px double #000000; padding:3px; width:120px; display:inline-block;">
+			<img id="q5_img_3" src="/icon_yellow.png" style="width: 100px; height: 100px;">
+			<p style="color: #000000;font-size:20px;font-weight:bold;" id="q5_text_3">object 3</p>
+		</div>
+		<div style="border: 3px double #000000; padding:3px; width:120px; display:inline-block;">
+			<img id="q5_img_4" src="/icon_yellow.png" style="width: 100px; height: 100px;">
+			<p style="color: #000000;font-size:20px;font-weight:bold;" id="q5_text_4">object 4</p>
+		</div>
+	</div>
+</div>
+
+<div id="test_content_6">
+
+	<div style="border: 3px double #000000; padding:3px; width:500px;">
+		<p style="color: #ff0000;font-size:28px;font-weight:bold;" id="q6_message">選出以下與聽見聲音最接近的表情:</p>
+	</div>
+	<p id="q6_text" style="color: #000000;font-size:28px;font-weight:bold;"></p>
+	<p></p>
+	<div id="choices_6">
+		<div style="border: 3px double #000000; padding:3px; width:120px; display:inline-block;">
+			<img id="q6_emo_1" src="/icon_yellow.png" style="width: 100px; height: 100px;">
+		</div>
+		<div style="border: 3px double #000000; padding:3px; width:120px; display:inline-block;">
+			<img id="q6_emo_2" src="/icon_yellow.png" style="width: 100px; height: 100px;">
+		</div>
+		<div style="border: 3px double #000000; padding:3px; width:120px; display:inline-block;">
+			<img id="q6_emo_3" src="/icon_yellow.png" style="width: 100px; height: 100px;">
+		</div>
+		<div style="border: 3px double #000000; padding:3px; width:120px; display:inline-block;">
+			<img id="q6_emo_4" src="/icon_yellow.png" style="width: 100px; height: 100px;">
+		</div>
+	</div>
+
+</div>
+
+
+</center>
+
 
 
 <div id="user_data"><% if user_signed_in? %>user_id_<%= current_user.id %><% end %></div>
