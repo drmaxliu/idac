@@ -704,7 +704,7 @@ Intelligence Development Accessment for Children
 <% else %>0
 <% end %><% end %>
 </div>
-<div id="user_level"><% if user_signed_in? %><%= current_user.level %><% end %></div>
+<div id="user_level_code"><% if user_signed_in? %><%= current_user.level %><% end %></div>
 <div id="user_answer"><% if user_signed_in? %>
 <% if current_user.tester_answers.count > 0 %>
 <%= current_user.tester_answers.first.answer %>

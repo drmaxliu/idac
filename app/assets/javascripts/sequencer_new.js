@@ -5,7 +5,7 @@ $(document).ready(function() {
   ud2.hide();
   ud2 = $('#user_status');
   ud2.hide();
-  ud2 = $('#user_level');
+  ud2 = $('#user_level_code');
   ud2.hide();
   ud2 = $('#user_answer');
   ud2.hide();
@@ -46,6 +46,8 @@ $(document).ready(function() {
   $('#user_bot_1i').css('width', "70px");
   $('#user_bot_2i').css('width', "70px");
   $('#user_bot_3i').css('width', "70px");
+  $('#user_level').css("width", "50px");
+
 
   var level;
   var status;
@@ -301,12 +303,9 @@ $(document).ready(function() {
     $('#welcome_text_1').html('開始測驗前，請先註冊或登入！');
   } else {
     // set up the test level
-    x = $('#user_level').html();
+    x = $('#user_level_code').html();
     level = parseInt(x);
     level_selected = level_joint[level-1];
-
-    // extract the status from partial test done earlier
-    status = $('#user_status').html();
 
     // extract answers
     if($('#user_answer').html()=='') {
