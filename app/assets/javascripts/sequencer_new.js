@@ -387,6 +387,7 @@ $(document).ready(function() {
         $('#alert_message').html('請按[練習鍵]或[往下鍵]開始。');
 
         // hide logout 
+        $('#show_logout').show();
         $('#hide_logout').hide();
         $('#test_start').hide();
       }

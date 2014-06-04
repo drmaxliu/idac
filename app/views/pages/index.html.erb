@@ -553,7 +553,7 @@ Intelligence Development Accessment for Children
 
   function stopVideo() {
   	player.stopVideo();
-  	$('#player').hide();
+  	// $('#player').hide();
   	
   	// test control handling after video end
   	$('#green').css('opacity', 1);
@@ -597,6 +597,7 @@ Intelligence Development Accessment for Children
   }
 
   function load2playVideo(videoID) {
+  	alert('to load ' + videoID + ' for video playing');
   	player.loadVideoById({'videoId': videoID, 'startSeconds': 5, 'endSeconds': 45, 'suggestedQuality': 'large'});
   	player.playVideo();
   	$('#player').show();
