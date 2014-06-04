@@ -363,7 +363,7 @@ $(document).ready(function() {
 
         // hide logout 
         $('#hide_logout').hide();
-        $('#show_logout').hide();
+        $('#show_logout').show();
         $('#test_start').show();
 
       } else {
