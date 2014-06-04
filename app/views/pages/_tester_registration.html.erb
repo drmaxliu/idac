@@ -27,10 +27,10 @@
     <%= f.text_field :email, :required => true, :autofocus => true %>
 
     <%= f.label :password, "密碼（必填）" %>
-    <%= f.text_field :password, :required => true %>
+    <%= f.text_field :password, :required => true, :type  => 'password' %>
 
     <%= f.label :password_confirmation, "再填密碼" %>
-    <%= f.text_field :password_confirmation, :required => true %>
+    <%= f.text_field :password_confirmation, :required => true, :type => 'password' %>
 
     <%= f.label :test_date, "設定測試日期" %>
     <%= f.date_select :test_date, :start_year => 2014 %>
