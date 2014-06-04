@@ -6,9 +6,9 @@ $(document).ready(function() {
   ud2 = $('#user_status');
   ud2.hide();
   ud2 = $('#user_level_code');
-  ud2.hide();
+  //ud2.hide();
   ud2 = $('#user_answer');
-  ud2.hide();
+  //ud2.hide();
 
 	// hide all test structures at the beginning
 	var test_types = ['', 'a', 'b', 'c', 'd', 'r'];
@@ -313,7 +313,12 @@ $(document).ready(function() {
       status = '0';
     } else {
       user_answer = $('#user_answer').html().split('||');
-      if(user_answer.lnegth>1) status = user_answer.shift();
+      if(user_answer.length>1) {
+        status = user_answer.shift();
+        status.replace(/\r/g, '');
+        status.replace(/\n/g, '');
+        status.replace(/ /g, '');
+      }
       else {
         init_answer();
         status = '0';
