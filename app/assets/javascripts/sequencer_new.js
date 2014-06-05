@@ -305,7 +305,7 @@ $(document).ready(function() {
     // set up the test level
     x = $('#user_level_code').html();
     level = parseInt(x);
-    level_selected = level_joint[level-1];
+    level_selected = level_joint[level];
 
     // extract answers
     if($('#user_answer').html()=='') {
@@ -686,6 +686,7 @@ $(document).ready(function() {
 
   var all_done;
   var key = '-';
+  var is_loaded = false;
 
 	// play audio, no repeat nor interference
 	$('#a2').on("click", function() {
@@ -695,6 +696,7 @@ $(document).ready(function() {
     if(exercise_mode) key = "e";
     else key = "t";
 
+    // load video
     if(group_id[0]=='1' || group_id[0]=='2') {
 
       $('#audio_play_q').get(0).play();
@@ -703,6 +705,22 @@ $(document).ready(function() {
       $('#next').hide();
       $('#answer_alert').show();
       $('#alert_message').html('首次播音，請牢記。');
+
+      if(group_id[1]=='c') {
+        var vid;
+        if(exercise_mode) {
+          if(group_id[0]=='1') vid = video_list_2[item_idx-1];
+          else if(group_id[0]=='2') vid = video_list_3[item_idx-1];
+          else vid = video_list_1[item_idx-1];
+        } else {
+          if(group_id[0]=='1') vid = video_list_1[item_idx-1];
+          else if(group_id[0]=='2') vid = video_list_2[item_idx-1];
+          else vid = video_list_3[item_idx-1];
+        }
+        is_loaded = true;
+
+        loadVideo(vid);
+      }
 
       
       current_answer += group_id + ':' + key + item_idx.toString() + '/';
@@ -748,16 +766,8 @@ $(document).ready(function() {
 
             // use iframe for video interference
             } else if(group_id[1]=='c') {
-              var vid;
-              if(exercise_mode) {
-                if(group_id[0]=='1') vid = video_list_2[item_idx-1];
-                else if(group_id[0]=='2') vid = video_list_3[item_idx-1];
-                else vid = video_list_1[item_idx-1];
-              } else {
-                if(group_id[0]=='1') vid = video_list_1[item_idx-1];
-                else if(group_id[0]=='2') vid = video_list_2[item_idx-1];
-                else vid = video_list_3[item_idx-1];
-              }
+              
+              // *** original place for video loading
             
               // set up for handling after video play stops
               handle_code = ''
@@ -780,7 +790,7 @@ $(document).ready(function() {
               // use iframe for video interference
               $('#answer_alert').show();
               $('#alert_message').html('影音將播放三十秒。請等播放結束再錄下你的回答。');
-              load2playVideo(vid); 
+              load2playVideo();  // *** vid
             }
 
           }, 1500);

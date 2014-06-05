@@ -596,9 +596,13 @@ Intelligence Development Accessment for Children
   	player.playVideo();
   }
 
-  function load2playVideo(videoID) {
-  	// alert('to load ' + videoID + ' for video playing');
+  function loadVideo(videoID) {
   	player.loadVideoById({'videoId': videoID, 'startSeconds': 5, 'endSeconds': 45, 'suggestedQuality': 'large'});
+  	player.pauseVideo();
+  }
+
+  function load2playVideo() {
+  	// alert('to load ' + videoID + ' for video playing');
   	player.playVideo();
   	$('#player').show();
   	$('#test_item').hide();
