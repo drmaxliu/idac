@@ -314,7 +314,7 @@ $(document).ready(function() {
     } else {
       user_answer = $('#user_answer').html().split('||');
       // if(user_answer.length>1) {
-      if(true)
+      if(true) {
         status = user_answer.shift();
         status.replace(/\r/g, '');
         status.replace(/\n/g, '');
