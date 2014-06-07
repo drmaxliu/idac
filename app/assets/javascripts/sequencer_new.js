@@ -313,6 +313,7 @@ $(document).ready(function() {
       status = '0';
     } else {
       user_answer = $('#user_answer').html().split('||');
+      alert($('#user_answer').html());
       if(user_answer.length>1) {
         status = user_answer.shift();
         status.replace(/\r/g, '');
