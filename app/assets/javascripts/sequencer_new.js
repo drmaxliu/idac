@@ -305,7 +305,7 @@ $(document).ready(function() {
     // set up the test level
     x = $('#user_level_code').html();
     level = parseInt(x);
-    level_selected = level_joint[level];
+    level_selected = level_joint[level-1];
 
     // extract answers
     if($('#user_answer').html()=='') {
@@ -313,8 +313,7 @@ $(document).ready(function() {
       status = '0';
     } else {
       user_answer = $('#user_answer').html().split('||');
-      // if(user_answer.length>1) {
-      if(true) {
+      if(user_answer.length>1) {
         status = user_answer.shift();
         status.replace(/\r/g, '');
         status.replace(/\n/g, '');
