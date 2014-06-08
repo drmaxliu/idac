@@ -543,15 +543,41 @@ Intelligence Development Accessment for Children
   //    The function indicates that when playing a video (state=1),
   //    the player should play for six seconds and then stop.
   var done = false;
+  var load_now = false;
 
   function onPlayerStateChange(event) {
+  	msg = $('#user_status').html();
+
     if (event.data == YT.PlayerState.PLAYING) {
+    	// alert('video is playing: ' + msg);
       setTimeout(stopVideo, 30000); // set up video player time
+      load_now = true;
+      videoID = msg.split('/').shift();
+      $('#user_status').html(msg + '/playing/' + videoID);
       // done = true;
+    } else if(event.data == YT.PlayerState.ENDED) {
+    	// alert('video play stopped: ' + msg);
+    	$('#user_status').html(msg + '/ended/' + videoID);
+
+    } else if(event.data == YT.PlayerState.UNSTARTED) {
+    	// alert('video play unstarted: ' + msg);
+    	if(load_now) {
+	    	videoID = msg.split('/').shift();
+	    	player.loadVideoById({'videoId': videoID, 'startSeconds': 5, 'endSeconds': 45, 'suggestedQuality': 'large'});
+	    	player.pauseVideo();
+	    	load_now = false;
+	    	$('#user_status').html(msg + '/load/' + videoID);
+	    }
     }
   }
 
+  function testVideo() {
+  	setTimeout(stopVideo, 10000);
+  }
+
   function stopVideo() {
+  	msg = $('#user_status').html();
+  	$('#user_status').html(msg+'/stopVideo()');
   	player.stopVideo();
   	// $('#player').hide();
   	
@@ -593,6 +619,8 @@ Intelligence Development Accessment for Children
   }
 
   function playVideo() {
+  	msg = $('#user_status').html();
+  	$('#user_status').html(msg+'/playVideo()');
   	player.playVideo();
   }
 
@@ -709,11 +737,6 @@ Intelligence Development Accessment for Children
 
 <div id="user_data"><% if user_signed_in? %>user_id_<%= current_user.id %><% end %></div>
 <div id="user_status">
-<% if user_signed_in? %>
-<% if current_user.tester_answers.count > 0 %>
-<%= current_user.tester_answers.first.score.to_s %>
-<% else %>0
-<% end %><% end %>
 </div>
 <div id="user_level_code"><% if user_signed_in? %><%= current_user.level %><% end %></div>
 <div id="user_answer"><% if user_signed_in? %>

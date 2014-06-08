@@ -4,7 +4,7 @@ $(document).ready(function() {
   var ud2 = $('#user_data');
   ud2.hide();
   ud2 = $('#user_status');
-  ud2.hide();
+  // ud2.hide();
   ud2 = $('#user_level_code');
   //ud2.hide();
   ud2 = $('#user_answer');
@@ -305,7 +305,7 @@ $(document).ready(function() {
     // set up the test level
     x = $('#user_level_code').html();
     level = parseInt(x);
-    level_selected = level_joint[level-1];
+    level_selected = level_joint[2]; // XXXX level_joint[level-1];
 
     // extract answers
     if($('#user_answer').html()=='') {
@@ -719,7 +719,8 @@ $(document).ready(function() {
         }
         is_loaded = true;
 
-        loadVideo(vid);
+        $('#user_status').html(vid + '/' + group_id + '/' + item_idx.toString());
+        // loadVideo(vid);
       }
 
       
@@ -789,8 +790,10 @@ $(document).ready(function() {
 
               // use iframe for video interference
               $('#answer_alert').show();
-              $('#alert_message').html('影音將播放三十秒。請等播放結束再錄下你的回答。');
-              load2playVideo();  // *** vid
+              $('#alert_message').html('影音將播放三十秒。');
+              // load2playVideo();  // *** vid
+              playVideo();
+              // testVideo();
             }
 
           }, 1500);
@@ -813,6 +816,20 @@ $(document).ready(function() {
         else if(group_id[1]=='b') post_canvas_question(elements, 3);
         else if(group_id[1]=='c') post_canvas_question(elements, 4);
         else if(group_id[1]=='d') post_canvas_question(elements, 4);
+      }
+
+      if(group_id[1]=='c' || group_id[1]=='d') {
+        if(exercise_mode) {
+          if(group_id=='3c') vid = video_list_2[item_idx-1];
+          else if(group_id=='4c') vid = video_list_2[item_idx+2];
+          else vid = video_list_2[item_idx+5];
+        } else {
+          if(group_id=='3c') vid = video_list_3[item_idx-1];
+          else if(group_id=='4c') vid = video_list_1[item_idx-1];
+          else vid = video_list_2[item_idx-1];
+        }
+
+        $('#user_status').html(vid + '/' + group_id + '/' + item_idx.toString());
       }
       
       // 3. handle displays
@@ -892,16 +909,7 @@ $(document).ready(function() {
 
           } else {
             // 1. select video to play after 5 second time out ...
-            var vid;
-            if(exercise_mode) {
-              if(group_id=='3c') vid = video_list_2[item_idx-1];
-              else if(group_id=='4c') vid = video_list_2[item_idx+2];
-              else vid = video_list_2[item_idx+5];
-            } else {
-              if(group_id=='3c') vid = video_list_3[item_idx-1];
-              else if(group_id=='4c') vid = video_list_1[item_idx-1];
-              else vid = video_list_2[item_idx-1];
-            }
+            // ....
             
             // 2. set up for handling after video play stops
             hide_all_buttons();
@@ -920,7 +928,8 @@ $(document).ready(function() {
             $('#answer_for_3a4').hide();
 
             // 4. load video and play
-            load2playVideo(vid); 
+            playVideo();
+            // xxx load2playVideo(vid); 
           }
         }, timeout); // (2) hide test question first time for [timeout] msec
 
