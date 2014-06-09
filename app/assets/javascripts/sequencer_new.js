@@ -1115,6 +1115,15 @@ $(document).ready(function() {
     else $('#test_buttons').show();
   }
 
+  $('#play_noise').on("click", function () {
+     $('#audio_play_n').get(0).play();
+  });
+
+   $('#stop_noise').on("click", function () {
+     $('#audio_play_n').get(0).pause();
+  });
+
+
   function draw_canvas_basic (canvas_id, elements, mode) {
     var c=document.getElementById(canvas_id);
     var ctx=c.getContext("2d");

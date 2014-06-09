@@ -477,6 +477,19 @@ Intelligence Development Accessment for Children
   Your browser does not support this audio format.
 </audio>
 
+<div>
+<span id="play_noise">Play Noise</span> | <span id="stop_noise">Stop Noise</span>
+</div>
+
+<audio id="audio_play_n">
+  <source src="/whitenoise.mp3" type="audio/mp3">
+  Your browser does not support this audio format.
+</audio>
+
+<div id="flash_noise">
+	<img src="/flash_noise.gif" style="width: 640px; height: 480px;">
+</div>
+
 
 <%-# recording controls -%>
 <%-#<div style="border: 3px double #000000;padding:3px;width:500px;" id="record_buttons"> -%>
@@ -502,8 +515,9 @@ Intelligence Development Accessment for Children
 	<img src="/flash_record.gif" style="width: 100px; height: 100px;">
 </div>
 
-
-<div id="player"></div>
+<div id="firstVideo">
+	<div id="player"></div>
+</div>
 
 <script>
   // 1. This code loads the IFrame Player API code asynchronously.
@@ -516,11 +530,24 @@ Intelligence Development Accessment for Children
   // 2. This function creates an <iframe> (and YouTube player)
   //    after the API code downloads.
   var player;
+
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
       height: '480',
       width: '640',
       videoId: 'BP--0Z-tmNk',
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function tryNewVideo(videoID) {
+  	player = new YT.Player('player', {
+      height: '480',
+      width: '640',
+      videoId: videoID,
       events: {
         'onReady': onPlayerReady,
         'onStateChange': onPlayerStateChange
@@ -544,6 +571,7 @@ Intelligence Development Accessment for Children
   //    the player should play for six seconds and then stop.
   var done = false;
   var load_now = false;
+  var videoPlayer = 1;
 
   function onPlayerStateChange(event) {
   	msg = $('#user_status').html();
@@ -563,10 +591,15 @@ Intelligence Development Accessment for Children
     	// alert('video play unstarted: ' + msg);
     	if(load_now) {
 	    	videoID = msg.split('/').shift();
-	    	player.loadVideoById({'videoId': videoID, 'startSeconds': 5, 'endSeconds': 45, 'suggestedQuality': 'large'});
-	    	player.pauseVideo();
+
+	    	$('#firstVideo').html('<div id="player"></div>');
+	    	tryNewVideo(videoID);
+
+	    	// player.loadVideoById({'videoId': videoID, 'startSeconds': 5, 'endSeconds': 45, 'suggestedQuality': 'large'});
+	    	// player.pauseVideo();
 	    	load_now = false;
 	    	$('#user_status').html(msg + '/load/' + videoID);
+
 	    }
     }
   }
@@ -622,6 +655,7 @@ Intelligence Development Accessment for Children
   	msg = $('#user_status').html();
   	$('#user_status').html(msg+'/playVideo()');
   	player.playVideo();
+
   }
 
   function loadVideo(videoID) {
