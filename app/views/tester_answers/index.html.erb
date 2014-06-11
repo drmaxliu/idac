@@ -1,29 +1,32 @@
-<h1>Listing tester_answers</h1>
+<h3><%= current_user.name %> 測驗結果</h3>
 
-<table>
-  <tr>
-    <th>Answer</th>
-    <th>Score</th>
-    <th>Ability</th>
-    <th>Std error</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>回答</th>
+      <th>分數</th>
+      <th>能力估計</th>
+      <th>標準誤</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+    
+  <tbody>
 
-<% @tester_answers.each do |tester_answer| %>
-  <tr>
-    <td><%= tester_answer.answer %></td>
-    <td><%= tester_answer.score %></td>
-    <td><%= tester_answer.ability %></td>
-    <td><%= tester_answer.std_error %></td>
-    <td><%= link_to 'Show', tester_answer %></td>
-    <td><%= link_to 'Edit', edit_tester_answer_path(tester_answer) %></td>
-    <td><%= link_to 'Destroy', tester_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+    <% @tester_answers.each do |tester_answer| %>
+      <tr>
+        <td><%= tester_answer.answer %></td>
+        <td><%= tester_answer.score %></td>
+        <td><%= tester_answer.ability %></td>
+        <td><%= tester_answer.std_error %></td>
+        <td><%= link_to 'Show', [current_user, tester_answer] %></td>
+        <td><%= link_to 'Edit', edit_user_tester_answer_path(current_user, tester_answer) %></td>
+        <td><%= link_to 'Destroy', [current_user, tester_answer], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+
 </table>
-
-<br />
-
-<%= link_to 'New Tester answer', new_tester_answer_path %>

@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<center>
+
+
+<h4>受測者姓名</h4>
+<p>
+  <%= current_user.name %>
+</p>
+
+<h4>受測分段</h4>
+<p>
+  <%= current_user.level %>
+</p>
+
+<h4>聯係人</h4>
+<p>
+  <%= current_user.contact %>
+</p>
+
+<h4>受測時間</h4>
+<p>
+  <%= current_user.test_date %>
+</p>
+
+<% @tester_answer = current_user.tester_answers.first %>
+
+<h4>測驗記錄</h4>
+<p>
+  <%= @tester_answer.answer %>
+</p>
+
+<h4>能力估計</h4>
+<p>
+  <%= @tester_answer.ability %>
+</p>
+
+</center>

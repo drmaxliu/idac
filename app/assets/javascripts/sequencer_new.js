@@ -4,11 +4,11 @@ $(document).ready(function() {
   var ud2 = $('#user_data');
   ud2.hide();
   ud2 = $('#user_status');
-  // ud2.hide();
+  ud2.hide();
   ud2 = $('#user_level_code');
-  //ud2.hide();
+  ud2.hide();
   ud2 = $('#user_answer');
-  //ud2.hide();
+  ud2.hide();
 
 	// hide all test structures at the beginning
 	var test_types = ['', 'a', 'b', 'c', 'd', 'r'];
@@ -24,8 +24,13 @@ $(document).ready(function() {
 	$('#record_buttons').hide();
 	$('#video_controls').hide();
 
+  $('#flash_noise').hide();
+
 	$('#test_item').hide();
 	$('#test_item_extra').hide();
+
+  $('#play_noise').hide();
+  $('#stop_noise').hide();
 
   $('#record_alert').hide();
   $('#answer_alert').hide();
@@ -191,7 +196,7 @@ $(document).ready(function() {
   
   var q5_img_e = ["rice.jpg", "banana.png", "watermelon.png", "rice.jpg"];
   var q5_img_c1 = [["drinking_water.jpg", "wash_hands.gif", "speaking.jpg", "pee.png"], ["watermelon.png", "egg.jpg", "egg_plant.png", "grape.jpg"]];
-  var q5_img_c2 = [["bitter_melon.jpg", "xiang_melon.jpg", "grape.jpg", "papaya.jpg"], ["mantou.jpg", "doujiangjpg", "dumpling.jpg", "noodle.jpg"]];
+  var q5_img_c2 = [["bitter_melon.jpg", "xiang_melon.jpg", "grape.jpg", "papaya.jpg"], ["mantou.jpg", "doujiang.jpg", "dumpling.jpg", "noodle.jpg"]];
   var q5_img_c = q5_img_c1.concat(q5_img_c2);
 
   var q5_test_1 = ["糖果", "米飯", "褲子", "水桶", "牙刷", "唱歌", "貓咪", "小花", "榕樹", "蝴蝶"];
@@ -238,7 +243,7 @@ $(document).ready(function() {
   var q5_c10 = [["椰子樹", "長頸鹿", "椅子", "電綫杆"], ["吃飯", "運動", "看電視", "喝水"], ["遊戲", "打架", "運動", "唱歌"]];
 
   var q5_img_c13 = [["bike.png", "train.jpg", "airplane.jpg", "bus.jpg"], ["parents.png", "police.jpg", "classmates.png", "principal.jpg"]];
-  var q5_img_c14 = [["dad.jpg", "uncle.jpg", "aunt.png", "uncle2.jpg"], ["palm.jpg", "giraffjpg", "chair.jpg", "pole.jpg"]];
+  var q5_img_c14 = [["dad.jpg", "uncle.jpg", "aunt.png", "uncle2.jpg"], ["palm.jpg", "giraff.jpg", "chair.jpg", "pole.jpg"]];
   var q5_img_c15 = [["eating.jpg", "exercise.jpg", "watching_tv.jpg", "drinking_water.jpg"], ["games.jpg", "fight.gif", "exercise.jpg", "sing.jpg"]];
   var q5_img_cc5 = q5_img_c13.concat(q5_img_c14, q5_img_c15);
 
@@ -305,7 +310,7 @@ $(document).ready(function() {
     // set up the test level
     x = $('#user_level_code').html();
     level = parseInt(x);
-    level_selected = level_joint[2]; // XXXX level_joint[level-1];
+    level_selected = level_joint[level-1];
 
     // extract answers
     if($('#user_answer').html()=='') {
@@ -324,6 +329,8 @@ $(document).ready(function() {
         status = '0';
       }
     }
+
+    // status = '9';
 
     if(status=='0') {
       exercise_mode = true;
@@ -347,7 +354,7 @@ $(document).ready(function() {
       $('#test_start').hide();
 
       $('#answer_alert').show();
-      $('#alert_message').html('請按[練習鍵]或[往下鍵]開始。');
+      $('#alert_message').html('請按[往下鍵]開始。');
     } else {
       exercise_mode = true;
       group_idx = parseInt(status);
@@ -363,7 +370,7 @@ $(document).ready(function() {
 
         // hide logout 
         $('#hide_logout').hide();
-        $('#show_logout').show();
+        $('#show_logout').hide();
         $('#test_start').show();
 
       } else {
@@ -384,7 +391,7 @@ $(document).ready(function() {
         $('#hide_instruction').show();
 
         $('#answer_alert').show();
-        $('#alert_message').html('請按[練習鍵]或[往下鍵]開始。');
+        $('#alert_message').html('請按[往下鍵]開始。');
 
         // hide logout 
         $('#show_logout').show();
@@ -395,6 +402,7 @@ $(document).ready(function() {
   }
 
   var new_group = false;
+  var test_done = false;
 
   // find the next problem, will update:
   // exercise_mode, group_idx, item_idx
@@ -440,6 +448,8 @@ $(document).ready(function() {
 
           exercise_mode = true;
           if(5*group_idx==level_selected.length) {
+
+            test_done = true;
 
             // close all displays
             $('#test_group_' + group_id).hide();
@@ -503,7 +513,6 @@ $(document).ready(function() {
             $('#test_description_' + group_id).show();
 
             // show form to save the current answers ....
-
             $('#show_instruction').hide();
             $('#hide_instruction').show();
 
@@ -569,6 +578,30 @@ $(document).ready(function() {
     $('#test_item').html(title);
   };
 
+  $('#show_answer').on("click", function() {
+    dsp = $('#user_status').css("display");
+    
+    if(dsp=="none") {
+      $('#user_data').show();
+      $('#user_status').show();
+      $('#user_level_code').show();
+      $('#user_answer').show();
+
+      $('#tester_answer').show();
+      $('#tester_answer_submit').show();
+    } else {
+      $('#user_data').hide();
+      $('#user_status').hide();
+      $('#user_level_code').hide();
+      $('#user_answer').hide();
+
+      $('#tester_answer').hide();
+      $('#tester_answer_submit').hide();
+    }
+
+    
+  });
+
   //
    $('#show_instruction').on("click", function() {
       $('#show_instruction').hide();
@@ -600,8 +633,8 @@ $(document).ready(function() {
     $('#welcome').hide();
     $('#tester_answer_submit').hide();
 
-    $('#group_' + group_id + '_exer').attr("src", '/icon_repeat.png');
-    $('#group_' + group_id + '_start').attr("src", '/icon_next.jpg');
+    $('#group_' + group_id + '_exer').attr("src", '/icon_next.jpg');
+    // $('#group_' + group_id + '_start').attr("src", '/icon_next.jpg');
 
     jump2test = false;
     exercise_mode = false;
@@ -620,8 +653,8 @@ $(document).ready(function() {
     $('#welcome').hide();
     $('#tester_answer_submit').hide();
 
-    $('#group_' + group_id + '_exer').attr("src", '/icon_repeat.png');
-    $('#group_' + group_id + '_start').attr("src", '/icon_next.jpg');
+    $('#group_' + group_id + '_exer').attr("src", '/icon_next.jpg');
+    // $('#group_' + group_id + '_start').attr("src", '/icon_next.jpg');
 
     exercise_mode = true;
     jump2test = false;
@@ -643,6 +676,8 @@ $(document).ready(function() {
       $('#test_content_3a4').show();
       $('#test_for_3a4').hide();
       $('#answer_for_3a4').hide();
+      $('#exercise_for_3a4').hide();
+      $('#arrow_for_3a4').hide();
     }
     // else $('#test_content_' + group_id[0]).show();
 
@@ -654,14 +689,13 @@ $(document).ready(function() {
   function hide_all_buttons() {
     $('#a2').hide(); // this starts the test item
     $('#yellow').hide(); // show up for repeating the test question
-    // if(group_id[0]=='5' || group_id[0]=='6') $('#green').hide();
-    // else $('#green').css('opacity', 0.2); // opacity = 1 when the test is answered
     $('#green').hide();
+    $('#noise').hide();
+    $('#repeat').hide();
     $('#answer').hide(); // show up after the test is given 
     $('#submit').hide(); // show up after the test is given
     $('#next').hide(); // show up after the user gives the anwswer
     $('#exer').hide(); // show up if there are still exercise questions
-    $('#response').hide(); // show up if there are still exercise questions
   }
 
   // load new audio
@@ -700,13 +734,16 @@ $(document).ready(function() {
     if(group_id[0]=='1' || group_id[0]=='2') {
 
       $('#audio_play_q').get(0).play();
+
       $('#a2').hide();
       $('#exer').hide();
       $('#next').hide();
+      $('#green').show();
       $('#answer_alert').show();
       $('#alert_message').html('首次播音，請牢記。');
 
-      if(group_id[1]=='c') {
+      // obsolete - no need with white noise
+      if(group_id[1]=='c' && false) {
         var vid;
         if(exercise_mode) {
           if(group_id[0]=='1') vid = video_list_2[item_idx-1];
@@ -723,24 +760,26 @@ $(document).ready(function() {
         // loadVideo(vid);
       }
 
-      
       current_answer += group_id + ':' + key + item_idx.toString() + '/';
 
+      // set up operation after audio play is done
       $('#audio_play_q').bind("ended", function() {
+        $('#green').hide();
 
         if(group_id[1]=='a' || all_done) {
           $('#answer_alert').show();
-          $('#alert_message').html('請等綠蘋果出現後開始錄音。');
+          $('#alert_message').html('黃燈消失后，開始錄音。');
+          $('#yellow').show();
+          $('#repeat').hide();
 
           // after audio is played, wait 3 seconds
           setTimeout(function() {
-            $('#green').show();
+            
             $('#yellow').hide();
 
             if(exercise_mode && item_idx < level_selected[5*group_idx+2]) $('#exer').show(); 
-            else $('#exer').hide();
-
-            $('#next').show();
+            // else $('#exer').hide();
+            else $('#next').show();
 
             if(exercise_mode) $('#answer').show();
             else $('#answer').hide();
@@ -752,25 +791,30 @@ $(document).ready(function() {
         } else {
           
           $('#answer_alert').show();
-          $('#alert_message').html('請等黃燈出現。');
+          $('#alert_message').html('黃燈出現5秒。');
+          $('#yellow').show();
 
           setTimeout(function() {
             all_done = true;
+            $('#yellow').hide();
 
             // audio is replayed
             if(group_id[1]=='b') {
               // play second time
               $('#audio_play_q').get(0).play();
-              $('#yellow').show();
+              $('#repeat').show();
+              
               $('#answer_alert').show();
               $('#alert_message').html('這是重復播音。');
 
             // use iframe for video interference
             } else if(group_id[1]=='c') {
+              $('#noise').show();
               
               // *** original place for video loading
             
               // set up for handling after video play stops
+              // .... xxxx ....
               handle_code = ''
               if(exercise_mode && item_idx < level_selected[5*group_idx+2]) handle_code = '1/';  //$('#exer').show(); 
               else handle_code = '0/'; // $('#exer').hide();
@@ -781,8 +825,10 @@ $(document).ready(function() {
               handle_code += group_id;
 
               $('#video_end_handle').html(handle_code);
+              // .... xxxxx ....
+
               $('#test_description_' + group_id).hide();
-              $('#test_group_' + group_id).hide();
+              $('#test_group_' + group_id).show();
               $('#test_content_1').hide();
 
               $('#show_instruction').show();
@@ -790,13 +836,35 @@ $(document).ready(function() {
 
               // use iframe for video interference
               $('#answer_alert').show();
-              $('#alert_message').html('影音將播放三十秒。');
+              $('#alert_message').html('雜音將播放十五秒。');
               // load2playVideo();  // *** vid
-              playVideo();
+              // ... playVideo();
               // testVideo();
+
+              $('#flash_noise').show();
+              $('#audio_play_n').get(0).play();
+
+              // 2. set up operation 15 plays
+              setTimeout(function() {
+                $('#flash_noise').hide();
+                $('#audio_play_n').get(0).pause();
+
+                $('#noise').hide();
+
+                if(exercise_mode && item_idx < level_selected[5*group_idx+2]) $('#exer').show(); 
+                else $('#next').show();
+
+                if(exercise_mode) $('#answer').show();
+                else $('#answer').hide();
+
+                $('#record_alert').show();
+                $('#answer_alert').hide();
+
+              }, 15000); 
+
             }
 
-          }, 1500);
+          }, 3000);
         }
       }); // audio bind for the first play
 
@@ -818,6 +886,7 @@ $(document).ready(function() {
         else if(group_id[1]=='d') post_canvas_question(elements, 4);
       }
 
+      /*
       if(group_id[1]=='c' || group_id[1]=='d') {
         if(exercise_mode) {
           if(group_id=='3c') vid = video_list_2[item_idx-1];
@@ -831,6 +900,7 @@ $(document).ready(function() {
 
         $('#user_status').html(vid + '/' + group_id + '/' + item_idx.toString());
       }
+      */
       
       // 3. handle displays
       $('#test_for_3a4').show();
@@ -849,7 +919,7 @@ $(document).ready(function() {
       if(group_id[1]=='b') timeout = 1000;
       else timeout = 5000;
 
-      // (1) hide test question after showing for 5 seconds
+      // (1) hide test question after showing for 2 seconds
       setTimeout(function() {
         $('#test_for_3a4').hide();
         $('#answer_for_3a4').hide();
@@ -870,7 +940,6 @@ $(document).ready(function() {
             hide_all_buttons();
             $('#green').show();
             if(exercise_mode) $('#answer').show();
-            $('#response').hide();
             $('#answer_alert').show();
 
             $('#alert_message').html('請在正確圖形處觸碰。');
@@ -899,7 +968,6 @@ $(document).ready(function() {
                 $('#green').show();
                 if(exercise_mode) $('#answer').show();
                 $('#answer_alert').show();
-                $('#response').hide();
                 $('#alert_message').html('請在正確圖形處觸碰。');
 
                 }, 5000); // (4) show choices after 5 second disappearce
@@ -914,13 +982,16 @@ $(document).ready(function() {
             // 2. set up for handling after video play stops
             hide_all_buttons();
             $('#test_buttons').hide();
+
+
+            // xxx
             handle_code = '0/'; // $('#exer').hide();
             if(exercise_mode) handle_code += '1/'; // $('#answer').show();
             else handle_code += '0/'; //$('#answer').hide();
             handle_code += group_id;
             $('#video_end_handle').html(handle_code);
+            // xxx
 
-            $('#alert_message').html('影音播放30秒，請稍候。');
 
             // 3. pre-draw and hide the canvas
             post_canvas_answers();
@@ -928,8 +999,43 @@ $(document).ready(function() {
             $('#answer_for_3a4').hide();
 
             // 4. load video and play
-            playVideo();
+            // playVideo();
             // xxx load2playVideo(vid); 
+
+            $('#flash_noise').show();
+            $('#audio_play_n').get(0).play();
+            $('#answer_alert').show();
+            $('#alert_message').html('雜音將播放十五秒。');
+
+            // 2. set up operation 15 plays
+            setTimeout(function() {
+              $('#flash_noise').hide();
+              $('#audio_play_n').get(0).pause();
+
+              $('#noise').hide();
+
+              if(exercise_mode && item_idx < level_selected[5*group_idx+2]) $('#exer').show(); 
+              else $('#next').show();
+
+              if(exercise_mode) $('#answer').show();
+              else $('#answer').hide();
+
+              // set up choices to select
+              post_canvas_answers();
+              $('#test_for_3a4').hide();
+              $('#answer_for_3a4').show();
+              $('#test_buttons').show();
+              hide_all_buttons();
+
+              $('#green').show();
+              if(exercise_mode) $('#answer').show();
+              $('#answer_alert').show();
+              $('#alert_message').html('請在正確圖形處觸碰。');
+
+
+            }, 15000); 
+
+
           }
         }, timeout); // (2) hide test question first time for [timeout] msec
 
@@ -965,6 +1071,23 @@ $(document).ready(function() {
         $('#q5_text_' + i.toString()).html(choices[i-1]);
         $('#q5_img_' + i.toString()).attr({src: '/'+ jj[i-1]});
       }
+      // for exercise mode, show answer
+      if(exercise_mode) {
+        if(group_id[1]=='a') {
+          if(item_idx==1) i = 1;
+          else i = 1;
+        } else {
+          if(item_idx==1) i = 1;
+          else i = 2;
+        }
+        $('#a5_text').html(choices[i-1]);
+        $('#a5_img').attr({src: '/'+ jj[i-1]});
+        $('#q5_answer').show();
+        $('#arrow_5').show();
+      } else {
+        $('#q5_answer').hide();
+        $('#arrow_5').hide();
+      }
       $('#test_content_5').show();
 
       // 3. handle displays
@@ -991,6 +1114,7 @@ $(document).ready(function() {
       $('#answer_alert').hide();
       $('#test_content_6').show();
 
+      // 2. display the question and choices
       if(exercise_mode) {
         qq = q6_list_e[item_idx-1];
         ii = q6_emo_e[item_idx-1];
@@ -1000,25 +1124,25 @@ $(document).ready(function() {
         ii = q6_emo_t[item_idx-1];
       }
 
-      // 2. display the question and choices
       $('#q6_text').html(qq);
       for(i=1;i<=4;i++) {
         $('#q6_emo_' + i.toString()).attr({src: '/'+ ii[i-1]});
       }
 
-      // 2. set up operation after play is finished
+      // 3. set up operation after play is finished
       $('#audio_play_q').bind("ended", function() {
 
         hide_all_buttons();
         $('#test_buttons').show();
-
+        $('#green').show();
         if(exercise_mode) $('#answer').show();
+
         $('#answer_alert').hide();
       });
 
       // 3. handle displays
       $('#test_description_' + group_id).hide();
-      $('#test_group_' + group_id).hide();
+      $('#test_group_' + group_id).show();
 
       $('#show_instruction').show();
       $('#hide_instruction').hide();
@@ -1029,42 +1153,39 @@ $(document).ready(function() {
   // play the answer audio
   $('#answer').on("click", function() {
   	if(group_id[0]=='1' || group_id[0]=='2') {
-
-      // $('#' + answer_id).get(0).play();
       $('#audio_play_a').get(0).play();
-
     }
-    else display_answer(group_id, item_idx, exercise_mode);
-  });
-
-  // for question groups after first 2
-  $('#response').on("click", function() {
-
-    response_handling();
-
+    else if(group_id[0]=='3' || group_id[0]=='4') {
+      $('#test_for_3a4').show();
+      if(group_id[0]=='4') {
+        $('#exercise_for_3a4').show();
+        $('#arrow_for_3a4').show();
+      }
+      else {
+        $('#exercise_for_3a4').hide();
+        $('#arrow_for_3a4').hide();
+      }
+    };
   });
 
   function response_handling() {
 
     hide_all_buttons();
-    $('#response').hide();
+    $('#exercise_for_3a4').hide();
+    $('#arrow_for_3a4').hide();
 
-    // in exercise mode, tester can jump to test or continue doing exercise
-    // otherwise, go directly to play the next problem
-    if(exercise_mode && item_idx < level_selected[5*group_idx+2]) {
-      $('#next').show();
-      $('#exer').show(); 
-    } else {
-      get_next_play_ready();
-    }
+    get_next_play_ready();
 
     $('#answer_for_3a4').hide();
     $('#test_content_5').hide();
     $('#test_content_6').hide();
 
-    $('#answer_alert').show();
-    if(item_idx!=test_start) $('#alert_message').html('請按[繼續鍵]');
+    if(!test_done) {
+      $('#answer_alert').show();
+      if(item_idx!=test_start) $('#alert_message').html('請按[繼續鍵]');
+    }
 
+  
   };
 
   // go to next exercise
@@ -1099,20 +1220,29 @@ $(document).ready(function() {
 
   function get_next_play_ready() {
     $('#answer_alert').show();
-    $('#alert_message').html('請按[播放鍵]');
+    $('#alert_message').html('請繼續下一題');
 
     next_problem();
 
     // setup for next test item
-    $('#a2').show();
+    $('#a2').hide();
     $('#yellow').hide();
     $('#green').hide();
     $('#submit').hide();
     $('#next').hide();
     $('#answer').hide();
     $('#exer').hide();
-    if(new_group) $('#test_buttons').hide();
+    if(new_group || test_done) $('#test_buttons').hide();
     else $('#test_buttons').show();
+
+    if(!test_done) {
+      if(exercise_mode && item_idx < level_selected[5*group_idx+2]) {
+        $('#exer').show(); 
+      } else {
+        $('#a2').show();
+      }
+    }
+
   }
 
   $('#play_noise').on("click", function () {
@@ -1135,10 +1265,11 @@ $(document).ready(function() {
       ctx.fillStyle = ee[0]; // color
       ctx.beginPath();
       if(mode==0) ctx.arc(ee[1],ee[2],ee[3],0,2*Math.PI); // ee[1], ee[2]: center point, ee[3]: radius
-      else if(mode==1) ctx.arc(ee[2], c.height-ee[1],ee[3],0,2*Math.PI); // clockwise + left-right swap
+      else if(mode==1) ctx.arc(ee[2], ee[1],ee[3],0,2*Math.PI); // clockwise + left-right swap
       else if(mode==2) ctx.arc(ee[2],ee[1],ee[3],0,2*Math.PI); // counter-clockwise + up-down
       else if(mode==3) ctx.arc(c.width - ee[2],ee[1],ee[3],0,2*Math.PI); // clockwise
-      else ctx.arc(ee[2],c.height-ee[1],ee[3],0,2*Math.PI); // counter-clockwise
+      else if(mode==4) ctx.arc(ee[2],c.height-ee[1],ee[3],0,2*Math.PI); // counter-clockwise
+      else ctx.arc(c.width-ee[2],c.height-ee[1],ee[3],0,2*Math.PI); // counter-clockwise + left-right swap
       ctx.fill();
       ctx.closePath();
     }
@@ -1148,6 +1279,14 @@ $(document).ready(function() {
 
     canvas_id = 'canvas_for_test';
     draw_canvas_basic(canvas_id, elements, mode);
+
+    if(group_id[0]=='4') {
+      canvas_id = 'canvas_for_answer';
+      if(group_id[1]=='a') draw_canvas_basic(canvas_id, elements, 1);
+      else if(group_id[1]=='b') draw_canvas_basic(canvas_id, elements, 1);
+      else if(group_id[1]=='c') draw_canvas_basic(canvas_id, elements, 2);
+      else if(group_id[1]=='d') draw_canvas_basic(canvas_id, elements, 5);
+    }
 
   }
 

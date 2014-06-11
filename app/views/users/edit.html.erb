@@ -1,0 +1,47 @@
+<center>
+
+<h3>修改受測者資料</h3>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  	<%= f.label :name, "受測者姓名" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+  	<%= f.label :school, "學校" %>
+    <%= f.text_field :school %>
+  </div>
+
+  <div class="field">
+  	<%= f.label :contact, "聯係人" %>
+    <%= f.text_field :contact %>
+  </div>
+
+  <div class="field">
+  	<%= f.label :description, "背景資料" %>
+    <%= f.text_field :description %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "完成送出", class: "btn btn-min btn-warning"%>
+  </div>
+<% end %>
+
+<%= link_to '顯示受測者資料', @user %> |
+<%= link_to '顯示所有受測者', users_path %>
+
+</center>

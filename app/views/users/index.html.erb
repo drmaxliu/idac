@@ -1,15 +1,16 @@
 <h3>已註冊受測者：</h3>
 
 <table class="table table-striped">
-		<thead>
+	<thead>
 	  <tr>
 	    <th>姓名</th>
 	    <th>生日</th>
-	    <th>生日</th>
 	    <th>測試區段</th>
+	    <th>學校</th>
 	    <th>聯係人</th>
 	    <th>背景資料</th>
 	    <th>受測日期</th>
+	    <th>完成進度</th>
 	    <th>總分</th>
 	    <th></th>
 	    <th></th>
@@ -28,6 +29,7 @@
 	    <td><%= u.contact %></td>
 	    <td><%= u.description %></td>
 	    <td><%= u.test_date %></td>
+	    <td><%= u.status %></td>
 	    <td><%= u.total_score %></td>
 	    <td><%= link_to 'Show', u %></td>
 	    <td><%= link_to 'Edit', edit_user_path(u) %></td>

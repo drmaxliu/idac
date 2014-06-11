@@ -48,40 +48,6 @@ Intelligence Development Accessment for Children
 	<% end %>
 </div>
 
-<div id='tester_answer_submit'>
-<% if user_signed_in? %>
-	<%= render 'tester_answer' %>
-<% end %>
-</div>
-
-<h3 id="test_group_1r">
-1A. 聲音記憶測驗: 
-</h3>
-
-<div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_1r">
-<p>
-<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
-	<ol style="text-align:left;">
-		<li>請按試聼鍵，調整音量至合適。</li>
-		<img id="test_audio" src="/icon_test.jpg" style="width: 100px; height: 100px;">
-		<li>請按以下錄音鍵，確定你的聲音可以錄進。</li>
-		<img id="record" src="/icon_microphone.png" style="width: 100px; height: 100px;" onclick="startRecording(this);">
-		<li>請按以下停止鍵，停止錄音。</li>
-		<img id="stop" src="/icon_stop.jpg" style="width: 100px; height: 100px;" onclick="stopRecording(this);">
-		<li>請按以下存檔鍵，將錄音存檔。</li>
-		<a id="save" href="#"><img src="/icon_save.jpg" style="width: 100px; height: 100px;"></a>
-		<li>請按開始鍵，題目即開始播出一些數字。</li>
-		<img id="group_1r_instruction" src="/flash_start.gif" style="width: 100px; height: 100px;">
-		<li>題目播完後，等待綠蘋果亮起，然後按錄音鍵，按著聽到的順序，回答你剛剛聽見的數字。</li>
-		<img src="/icon_green.jpg" style="width: 100px; height: 100px;">
-		<li>回答結束後，請再按錄音鍵即結束。</li>
-		<li>之後請再按存儲鍵，將剛剛的錄音存檔。</li>
-		<li>按繼續鍵， 測驗就會進入下一題。現在按此鍵，將首先出現此類別測驗的練習題。</li>
-		<img src="/flash_next.gif" style="width: 100px; height: 100px;">
-	</ol>
-</p>
-</div>
-
 <h3 id="test_group_1a">
 1A. 聲音記憶測驗: 
 </h3>
@@ -90,18 +56,18 @@ Intelligence Development Accessment for Children
 <p>
 <span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 	<ol style="text-align:left;">
+		<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+		<img id="group_1a_exer" class="play_exer" src="/flash_next.gif" style='width: 100px; height: 100px;'>
 		<li>按以下播放鍵，每個題目將播出一些數字，請邊聼邊記得。</li>
-		<img src="/icon_start.png" style="width: 100px; height: 100px;">
-		<li>題目播完後，等待[綠蘋果]亮起，用自備錄音筆或錄音機，按著聽到的順序回答，錄下你剛剛聽見的數字。</li>
-		<img id="group_1a_green" src="/icon_green.jpg" style="width: 90px; height: 90px;">
-		<li>聼説明請按以下[說明鍵]。</li>
-		<img id="group_1a_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-		<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-		<img class="play_exer" id="group_1a_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-		<li>如果是練習題，題目結束後，可以按以下[答案鍵]聼答案。</li>
-		<img src="/icon_answer.jpg" style="width: 100px; height: 100px;">
-		<li>按以下的[往下鍵]可以直接開始作答。</li>
-		<img class="play_test" id="group_1a_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+		<img src="/icon_start.png" style="width: 90px; height: 90px;">
+		<li>題目播放中，有綠燈顯示。</li>
+		<img src="/icon_green.png" style="width: 100px; height: 100px;">
+		<li>題目播完後，黃燈亮起，請等待。</li>
+		<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
+		<li>當錄音顯示時，請用自備錄音筆或錄音機，按著聽到的順序錄下你剛剛聽見的數字。</li>
+		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
+		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
 </p>
 </div>
@@ -114,44 +80,46 @@ Intelligence Development Accessment for Children
 <p>
 <span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 	<ol style="text-align:left;">
+		<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+		<img id="group_1b_exer" class="play_exer" src="/flash_next.gif" style='width: 100px; height: 100px;'>
 		<li>按以下播放鍵，每個題目將播出一些數字，請邊聼邊記得。</li>
-		<img src="/icon_start.png" style="width: 100px; height: 100px;">
-		<li>題目第一次播完後，[黃燈]亮起，之前的數字會再次播出。</li>
+		<img src="/icon_start.png" style="width: 90px; height: 90px;">
+		<li>題目播放中，有綠燈顯示。</li>
+		<img src="/icon_green.png" style="width: 100px; height: 100px;">
+		<li>題目播完後，黃燈亮起，請等待。</li>
 		<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
-		<li>當數字再次播完後，[綠蘋果]亮起，用自備錄音筆或錄音機，按著聽到的順序回答，錄下你剛剛聽見的數字。</li>
-		<img src="/icon_green.jpg" style="width: 100px; height: 100px;">
-		<li>聼説明請按以下[說明鍵]。</li>
-		<img id="group_1b_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-		<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-		<img class="play_exer" id="group_1b_exer" src="/flash_exer.gif" style="width: 100px; height: 100px;">
-		<li>如果是練習題，題目結束後，可以按以下[答案鍵]聼答案。</li>
-		<img src="/icon_answer.jpg" style="width: 100px; height: 100px;">
-		<li>按以下的[往下鍵]可以直接開始作答。</li>
-		<img class="play_test" id="group_1b_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+		<li>黃燈消失后會會再次撥出題目。</li>
+		<img src="/icon_repeat.gif" style="width: 100px; height: 100px;">
+		<li>題目重復播完後，請用自備錄音筆或錄音機，按著聽到的順序錄下你剛剛聽見的數字。</li>
+		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
+		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
 </p>
 </div>
 
 <h3 id="test_group_1c">
-1C. 影音干預聲音記憶測驗: 
+1C. 雜音干預聲音記憶測驗: 
 </h3>
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_1c">
 <p>
 <span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 	<ol style="text-align:left;">
-		<li>按以下播放鍵，每個題目將播出一些數字，請邊聼邊記得。播完後會出現一段影音。</li>
-		<img src="/icon_start.png" style="width: 100px; height: 100px;">
-		<li>當影音播完後，[綠蘋果]亮起，用自備錄音筆或錄音機，按著聽到的順序回答，錄下你剛剛聽見的數字。</li>
-		<img src="/icon_green.jpg" style="width: 100px; height: 100px;">
-		<li>聼説明請按以下[說明鍵]。</li>
-		<img id="group_1c_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-		<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-		<img class="play_exer" id="group_1c_exer" src="/flash_exer.gif" style="width: 100px; height: 100px;">
-		<li>如果是練習題，題目結束後，可以按以下[答案鍵]聼答案。</li>
-		<img src="/icon_answer.jpg" style="width: 100px; height: 100px;">
-		<li>按以下的[往下鍵]可以直接開始作答。</li>
-		<img class="play_test" id="group_1c_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+		<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+		<img id="group_1c_exer" class="play_exer" src="/flash_next.gif" style='width: 100px; height: 100px;'>
+		<li>按以下播放鍵，每個題目將播出一些數字，請邊聼邊記得。</li>
+		<img src="/icon_start.png" style="width: 90px; height: 90px;">
+		<li>題目播放中，有綠燈顯示。</li>
+		<img src="/icon_green.png" style="width: 100px; height: 100px;">
+		<li>題目播完後，黃燈亮起，請等待。</li>
+		<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
+		<li>黃燈消失后會出現一段雜訊。</li>
+		<img src="/icon_noise.png" style="width: 120px; height: 120px;">
+		<li>雜音結束后，請用自備錄音筆或錄音機，按著聽到的順序錄下你剛剛聽見的數字。</li>
+		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
+		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
 	</ol>
 </p>
@@ -169,78 +137,80 @@ Intelligence Development Accessment for Children
 <%-# </div> -%>
 
 <h3 id="test_group_2a">
-2A. 聲音記憶與操作測驗: 兩兩交換
+2A. 聲音記憶與操作測驗: 每兩個數字略去後一個
 </h3>
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_2a">
 <p>
 <span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 	<ol style="text-align:left;">
+		<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+		<img id="group_2a_exer" class="play_exer" src="/flash_next.gif" style='width: 100px; height: 100px;'>
 		<li>按以下播放鍵，每個題目將播出一些數字，請邊聼邊記得。</li>
-		<img src="/icon_start.png" style="width: 100px; height: 100px;">
-		<li>題目播完後，[綠蘋果]亮起，用自備錄音筆或錄音機，按著聽到的順序回答，錄下你剛剛聽見的數字。</li>
-		<img id="group_2a_green" src="/icon_green.jpg" style="width: 90px; height: 90px;">
-		<li style="color:#ff0000;">將聽見的數字，每兩個交換次序，然後回答。例如：聽見的數字是8,4,1,7。你要回答：4,8,7,1。</li>
-		<li>聼説明請按以下[說明鍵]。</li>
-		<img id="group_2a_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-		<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-		<img class="play_exer" id="group_2a_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-		<li>如果是練習題，題目結束後，可以按以下[答案鍵]聼答案。</li>
-		<img src="/icon_answer.jpg" style="width: 100px; height: 100px;">
-		<li>按以下的[往下鍵]可以直接開始作答。</li>
-		<img class="play_test" id="group_2a_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+		<img src="/icon_start.png" style="width: 90px; height: 90px;">
+		<li>題目播放中，有綠燈顯示。</li>
+		<img src="/icon_green.png" style="width: 100px; height: 100px;">
+		<li>題目播完後，黃燈亮起，請等待。</li>
+		<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
+		<li style="color:#ff0000;">將聽見的數字，每兩個數字略掉後一個，然後回答。例如：聽見的數字是1,3,7,9。你要回答：1,7。</li>
+		<li>當錄音顯示時，請用自備錄音筆或錄音機，按著以上要求說出數字。</li>
+		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
+		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
 </p>
 </div>
 
 <h3 id="test_group_2b">
-2B. 聲音記憶與操作測驗: 前半后半對換
+2B. 聲音記憶與操作測驗: 重復播音和前半后半對換
 </h3>
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_2b">
 <p>
 <span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 	<ol style="text-align:left;">
+		<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+		<img id="group_2b_exer" class="play_exer" src="/flash_next.gif" style='width: 100px; height: 100px;'>
 		<li>按以下播放鍵，每個題目將播出一些數字，請邊聼邊記得。</li>
-		<img src="/icon_start.png" style="width: 100px; height: 100px;">
-		<li>題目第一次播完後，[黃燈]亮起，之前的數字會再次播出。</li>
+		<img src="/icon_start.png" style="width: 90px; height: 90px;">
+		<li>題目播放中，有綠燈顯示。</li>
+		<img src="/icon_green.png" style="width: 100px; height: 100px;">
+		<li>題目播完後，黃燈亮起，請等待。</li>
 		<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
-		<li>當數字再次播完後，[綠蘋果]亮起，用自備錄音筆或錄音機，按著聽到的順序和以下的要求錄下你的回答。</li>
-		<img id="group_2b_green" src="/icon_green.jpg" style="width: 90px; height: 90px;">
-		<li style="color:#ff0000;">將聽見的數字，分成前後各半的兩部反，然後先回答后半部，在再回答前半部。例如：聽見的數字是8,4,1,7,5,9。你要回答：7,5,9,8,4,1。</li>
-		<li>聼説明請按以下[說明鍵]。</li>
-		<img id="group_2b_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-		<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-		<img class="play_exer" id="group_2b_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-		<li>如果是練習題，題目結束後，可以按以下[答案鍵]聼答案。</li>
-		<img src="/icon_answer.jpg" style="width: 100px; height: 100px;">
-		<li>按以下的[往下鍵]可以直接開始作答。</li>
-		<img class="play_test" id="group_2b_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+		<li>黃燈消失后會會再次撥出題目。</li>
+		<img src="/icon_repeat.gif" style="width: 100px; height: 100px;">
+		<li style="color:#ff0000;">將聽見的數字，分成前後各半的兩部反，然後先回答后半部，在再回答前半部。例如：聽見的數字是8,0,3,4,2,7。你要回答：4,2,7,8,0,3。</li>
+		<li>當錄音顯示時，請用自備錄音筆或錄音機，按著以上要求說出數字。</li>
+		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
+		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
 </p>
 </div>
 
 <h3 id="test_group_2c">
-2C. 聲音記憶與操作測驗: 兩兩相加
+2C. 聲音記憶與操作測驗: 雜音干擾和兩兩相加
 </h3>
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_2c">
 <p>
 <span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 	<ol style="text-align:left;">
-		<li>按以下播放鍵，每個題目將播出一些數字，請邊聼邊記得。播完後會出現一段影音。</li>
-		<img src="/icon_start.png" style="width: 100px; height: 100px;">
-		<li>影音播完後，[綠蘋果]亮起，用自備錄音筆或錄音機，按著聽到的順序和以下的要求錄下你的回答。</li>
-		<img id="group_2c_green" src="/icon_green.jpg" style="width: 90px; height: 90px;">
+		<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+		<img id="group_2c_exer" class="play_exer" src="/flash_next.gif" style='width: 100px; height: 100px;'>
+		<li>按以下播放鍵，每個題目將播出一些數字，請邊聼邊記得。</li>
+		<img src="/icon_start.png" style="width: 90px; height: 90px;">
+		<li>題目播放中，有綠燈顯示。</li>
+		<img src="/icon_green.png" style="width: 100px; height: 100px;">
+		<li>題目播完後，黃燈亮起，請等待。</li>
+		<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
+		<li>黃燈消失后會出現一段雜訊。</li>
+		<img src="/icon_noise.png" style="width: 120px; height: 120px;">
 		<li style="color:#ff0000;">將聽見的數字，按著次序 ，每兩個相加，再按著次序讀出。例如：聽見的數字是8,4,1,7,5,9。你要回答：12,8,14。</li>
-		<li>聼説明請按以下[說明鍵]。</li>
-		<img id="group_2c_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-		<li>正式作答前 ，可按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-		<img class="play_exer" id="group_2c_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-		<li>如果是練習題，題目結束後，可以按以下[答案鍵]聼答案。</li>
-		<img src="/icon_answer.jpg" style="width: 100px; height: 100px;">
-		<li>按以下的[往下鍵]可以直接開始作答。</li>
-		<img class="play_test" id="group_2c_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+		<li>當錄音顯示時，請用自備錄音筆或錄音機，按著以上要求說出數字。</li>
+		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
+		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
 </p>
 </div>
@@ -254,14 +224,15 @@ Intelligence Development Accessment for Children
 	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 		<ol style="text-align:left;">
 			<li>每個題目有一個方框，裏面有若干個小球在不同的位置。</li>
-			<li>在一定時間内，題目即會消失，並出現包含題目的若干圖形。</li>
-			<li>請選擇和原來題目圖形一樣的圖形。</li>
-			<li>聼説明請按以下[說明鍵]。</li>
-			<img id="group_3a_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-			<img class="play_exer" id="group_3a_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-			<li>按以下的[往下鍵]可以直接開始作答。</li>
-			<img class="play_test" id="group_3a_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+			<img class="play_exer" id="group_3a_exer" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下播放鍵，題目將出現，請牢記圖形。</li>
+			<img src="/icon_start.png" style="width: 90px; height: 90px;">
+			<li>在一定時間内，題目即會消失，黃燈亮起，請等待。</li>
+			<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
+			<li>黃燈消失後，請選擇和原來題目一樣的圖形。</li>
+			<li>如果是練習題，題目結束後，可以按以下[答案鍵]，比較答案。</li>
+			<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 		</ol>
 	</p>
 </div>
@@ -275,21 +246,22 @@ Intelligence Development Accessment for Children
 	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 		<ol style="text-align:left;">
 			<li>每個題目有一個方框，裏面有若干個小球在不同的位置。</li>
-			<li>在一定時間内，題目即會消失，在短暫時間後，原來的題目會再次出現。</li>
-			<li>當題目再次消失，會出現包含原來題目的若干圖形。</li>
-			<li>請選擇和原來題目圖形一樣的圖形。</li>
-			<li>聼説明請按以下[說明鍵]。</li>
-			<img id="group_3b_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-			<img class="play_exer" id="group_3b_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-			<li>按以下的[往下鍵]可以直接開始作答。</li>
-			<img class="play_test" id="group_3b_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+			<img class="play_exer" id="group_3b_exer" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下播放鍵，題目將出現，請牢記圖形。</li>
+			<img src="/icon_start.png" style="width: 90px; height: 90px;">
+			<li>在一定時間内，題目即會消失，黃燈亮起，請等待。</li>
+			<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
+			<li>黃燈消失後，原來的題目會再次出現。</li>
+			<li>當題目再次消失，請選擇和原來題目一樣的圖形。</li>
+			<li>如果是練習題，題目結束後，可以按以下[答案鍵]，比較答案。</li>
+			<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 		</ol>
 	</p>
 </div>
 
 <h3 id="test_group_3c">
-3C. 空間記憶測驗: 影音干擾
+3C. 空間記憶測驗: 雜音干擾
 </h3>
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_3c">
@@ -297,15 +269,17 @@ Intelligence Development Accessment for Children
 	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 		<ol style="text-align:left;">
 			<li>每個題目有一個方框，裏面有若干個小球在不同的位置。</li>
-			<li>在一定時間内，題目即會消失，並出現一段影音。</li>
-			<li>當影音結束后，會出現包含原來題目的若干圖形。</li>
-			<li>請選擇和原來題目圖形一樣的圖形。</li>
-			<li>聼説明請按以下[說明鍵]。</li>
-			<img id="group_3c_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-			<img class="play_exer" id="group_3c_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-			<li>按以下的[往下鍵]可以直接開始作答。</li>
-			<img class="play_test" id="group_3c_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+			<img class="play_exer" id="group_3c_exer" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下播放鍵，題目將出現，請牢記圖形。</li>
+			<img src="/icon_start.png" style="width: 90px; height: 90px;">
+			<li>在一定時間内，題目即會消失，黃燈出現。</li>
+			<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
+			<li>黃燈消失後，會出現一陣雜音。</li>
+			<img src="/icon_noise.png" style="width: 120px; height: 120px;">
+			<li>當雜音結束，請選擇和原來題目一樣的圖形。</li>
+			<li>如果是練習題，題目結束後，可以按以下[答案鍵]，比較答案。</li>
+			<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 		</ol>
 	</p>
 </div>
@@ -319,15 +293,15 @@ Intelligence Development Accessment for Children
 	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 		<ol style="text-align:left;">
 			<li>每個題目有一個方框，裏面有若干個小球在不同的位置。</li>
-			<li>在一定時間内，題目即會消失，並出現包含題目的若干圖形。</li>
-			<li>請按著以下要求選擇正確圖形。</li>
-			<li style="color:#ff0000;">選擇與原來圖形左右翻轉的。</li>
-			<li>聼説明請按以下[說明鍵]。</li>
-			<img id="group_4a_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-			<img class="play_exer" id="group_4a_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-			<li>按以下的[往下鍵]可以直接開始作答。</li>
-			<img class="play_test" id="group_4a_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+			<img class="play_exer" id="group_4a_exer" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下播放鍵，題目將出現，請牢記圖形。</li>
+			<img src="/icon_start.png" style="width: 90px; height: 90px;">
+			<li>在一定時間内，題目即會消失，黃燈亮起，請等待。</li>
+			<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
+			<li tyle="color:#ff0000;">黃燈消失後，選擇與原來圖形左右翻轉的。</li>
+			<li>如果是練習題，題目結束後，可以按以下[答案鍵]，比較答案。</li>
+			<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 		</ol>
 	</p>
 </div>
@@ -341,24 +315,22 @@ Intelligence Development Accessment for Children
 	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 		<ol style="text-align:left;">
 			<li>每個題目有一個方框，裏面有若干個小球在不同的位置。</li>
-			<li>在一定時間内，題目即會消失。</li>
-			<li>在一定時間内，題目即會再次顯現。</li>
-			<li>在一定時間内，題目即會再消失。</li>
-			<li>在一定時間内，會出現包含題目的若干圖形。</li>
-			<li>請按著以下要求選擇正確圖形。</li>
-			<li style="color:#ff0000;">選擇與原來圖形左右翻轉的。</li>
-			<li>聼説明請按以下[說明鍵]。</li>
-			<img id="group_4b_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-			<img class="play_exer" id="group_4b_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-			<li>按以下的[往下鍵]可以直接開始作答。</li>
-			<img class="play_test" id="group_4b_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+			<img class="play_exer" id="group_4b_exer" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下播放鍵，題目將出現，請牢記圖形。</li>
+			<img src="/icon_start.png" style="width: 90px; height: 90px;">
+			<li>在一定時間内，題目即會消失，黃燈亮起，請等待。</li>
+			<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
+			<li>黃燈消失後，原來的題目會再次出現。</li>
+			<li  style="color:#ff0000;">當題目再次消失，選擇與原來圖形左右翻轉的。</li>
+			<li>如果是練習題，題目結束後，可以按以下[答案鍵]，比較答案。</li>
+			<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 		</ol>
 	</p>
 </div>
 
 <h3 id="test_group_4c">
-4C. 空間記憶與操作測驗: 影音干擾與上下翻轉
+4C. 空間記憶與操作測驗: 雜音干擾與上下翻轉
 </h3>
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_4c">
@@ -366,24 +338,23 @@ Intelligence Development Accessment for Children
 	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 		<ol style="text-align:left;">
 			<li>每個題目有一個方框，裏面有若干個小球在不同的位置。</li>
-			<li>在一定時間内，題目即會消失。</li>
-			<li>在一定時間内，影音會顯現。</li>
-			<li>在一定時間内，影音會結束。</li>
-			<li>之後會出現包含題目的若干圖形。</li>
-			<li>請按著以下要求選擇正確圖形。</li>
-			<li style="color:#ff0000;">選擇與原來圖形上下翻轉的。</li>
-			<li>聼説明請按以下[說明鍵]。</li>
-			<img id="group_4c_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-			<img class="play_exer" id="group_4c_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-			<li>按以下的[往下鍵]可以直接開始作答。</li>
-			<img class="play_test" id="group_4c_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+			<img class="play_exer" id="group_4c_exer" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下播放鍵，題目將出現，請牢記圖形。</li>
+			<img src="/icon_start.png" style="width: 90px; height: 90px;">
+			<li>在一定時間内，題目即會消失，黃燈出現。</li>
+			<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
+			<li>黃燈消失後，會出現一陣雜音。</li>
+			<img src="/icon_noise.png" style="width: 120px; height: 120px;">
+			<li style="color:#ff0000;">當雜音結束，選擇與原來圖形上下翻轉的。</li>
+			<li>如果是練習題，題目結束後，可以按以下[答案鍵]，比較答案。</li>
+			<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 		</ol>
 	</p>
 </div>
 
 <h3 id="test_group_4d">
-4D. 空間記憶與操作測驗: 影音干擾與左右翻轉。
+4D. 空間記憶與操作測驗: 雜音干擾與左右翻轉。
 </h3>
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_4d">
@@ -391,44 +362,39 @@ Intelligence Development Accessment for Children
 	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 		<ol style="text-align:left;">
 			<li>每個題目有一個方框，裏面有若干個小球在不同的位置。</li>
-			<li>在一定時間内，題目即會消失。</li>
-			<li>在一定時間内，影音會顯現。</li>
-			<li>在一定時間内，影音會結束。</li>
-			<li>之後會出現包含題目的若干圖形。</li>
-			<li>請按著以下要求選擇正確圖形。</li>
-			<li style="color:#ff0000;">選擇與原來圖形左右翻轉的。</li>
-			<li>聼説明請按以下[說明鍵]。</li>
-			<img id="group_4d_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-			<img class="play_exer" id="group_4d_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-			<li>按以下的[往下鍵]可以直接開始作答。</li>
-			<img class="play_test" id="group_4d_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+			<img class="play_exer" id="group_4d_exer" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下播放鍵，題目將出現，請牢記圖形。</li>
+			<img src="/icon_start.png" style="width: 90px; height: 90px;">
+			<li>在一定時間内，題目即會消失，黃燈出現。</li>
+			<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
+			<li>黃燈消失後，會出現一陣雜音。</li>
+			<img src="/icon_noise.png" style="width: 120px; height: 120px;">
+			<li style="color:#ff0000;">當雜音結束，選擇與原來圖形左右翻轉的。</li>
+			<li>如果是練習題，題目結束後，可以按以下[答案鍵]，比較答案。</li>
+			<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 		</ol>
 	</p>
 </div>
 
 <h3 id="test_group_5a">
-5A. 具體概念測驗: 
+5A. 概念測驗：選擇一個最接近的概念
 </h3>
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_5a">
 	<p>
 	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 		<ol style="text-align:left;">
-			<li>每個題目會給出一個東西，和與這個東西最接近的三個概念。</li>
-			<li>請選擇與題目的東西，概念最接近的選項。</li>
-			<li>聼説明請按以下[說明鍵]。</li>
-			<img id="group_5a_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-			<img class="play_exer" id="group_5a_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-			<li>按以下的[往下鍵]可以直接開始作答。</li>
-			<img class="play_test" id="group_5a_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>每個題目會給出一個東西，和與這個東西最接近的一個概念。</li>
+			<li>請選擇與題目的東西，概念<span style="color: #ff0000;">最接近</span>的選項。</li>
+			<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+			<img class="play_exer" id="group_5a_exer" src="/flash_next.gif" style="width: 90px; height: 90px;">
 		</ol>
 	</p>
 </div>
 
 <h3 id="test_group_5b">
-5B. 抽象概念測驗: 
+5B. 概念測驗: 選擇一個最不接近的概念
 </h3>
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="test_description_5b">
@@ -436,13 +402,9 @@ Intelligence Development Accessment for Children
 	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 		<ol style="text-align:left;">
 			<li>每個題目會給出一個東西，和與這個東西最接近的三個概念。</li>
-			<li>請選擇與題目的東西，概念最接近的選項。</li>
-			<li>聼説明請按以下[說明鍵]。</li>
-			<img id="group_5b_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-			<img class="play_exer" id="group_5b_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-			<li>按以下的[往下鍵]可以直接開始作答。</li>
-			<img class="play_test" id="group_5b_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>請選擇與題目的東西，概念<span style="color: #ff0000;">最不接近</span>的選項。</li>
+			<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+			<img class="play_exer" id="group_5b_exer" src="/flash_next.gif" style="width: 90px; height: 90px;">
 		</ol>
 	</p>
 </div>
@@ -455,14 +417,10 @@ Intelligence Development Accessment for Children
 	<p>
 	<span style="font-size:20px; font-weight:bold; text-align:left;">測驗説明：</span>
 		<ol style="text-align:left;">
-			<li>每個題目即會播一段話。</li>
+			<li>每個題目會播一段話。</li>
 			<li>聲音結束后，會出現綠燈。根據音調，選擇與感受最接近的情緒選項。</li>
-			<li>聼説明請按以下[說明鍵]。</li>
-			<img id="group_6_instruction" src="/icon_instruction.jpg" style="width: 90px; height: 90px;">
-			<li>正式作答前 ，可以按以下[練習鍵]， 測驗就會進入練習題。繼續按此鍵，將會繼續出現練習題。</li>
-			<img class="play_exer" id="group_6_exer" src="/flash_exer.gif" style="width: 90px; height: 90px;">
-			<li>按以下的[往下鍵]可以直接開始作答。</li>
-			<img class="play_test" id="group_6_start" src="/flash_next.gif" style="width: 100px; height: 100px;">
+			<li>按以下的[往下鍵]開始作答，會先出現兩題練習題（不計分）。</li>
+			<img class="play_exer" id="group_6_exer" src="/flash_next.gif" style="width: 90px; height: 90px;">
 		</ol>
 	</p>
 </div>
@@ -478,17 +436,13 @@ Intelligence Development Accessment for Children
 </audio>
 
 <div>
-<span id="play_noise">Play Noise</span> | <span id="stop_noise">Stop Noise</span>
+<span id="play_noise">Play Noise | </span><span id="stop_noise">Stop Noise</span>
 </div>
 
 <audio id="audio_play_n">
   <source src="/whitenoise.mp3" type="audio/mp3">
   Your browser does not support this audio format.
 </audio>
-
-<div id="flash_noise">
-	<img src="/flash_noise.gif" style="width: 640px; height: 480px;">
-</div>
 
 
 <%-# recording controls -%>
@@ -500,185 +454,29 @@ Intelligence Development Accessment for Children
 
 <h4 id="test_item">第1題</h4>
 
+<div style="border: 3px double #000000;padding:3px;width:500px;" id="record_alert">
+	<p style="color: #ff0000;font-size:32px;font-weight:bold;"><blink>錄音結束后，繼續下面題目</blink></p>
+	<img src="/flash_record.gif" style="width: 100px; height: 100px;">
+</div>
+
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="test_buttons">
 	<img id="a2" src="/flash_start.gif" style="width: 100px; height: 100px;">
 	<img id="yellow" src="/icon_yellow.png" style="width: 100px; height: 100px;">
-	<img id="green" src="/icon_green.jpg" style="width: 100px; height: 100px;">
+	<img id="green" src="/icon_green.png" style="width: 100px; height: 100px;">
+	<img id="noise" src="/icon_noise.png" style="width: 100px; height: 100px;">
 	<img id="answer" src="/icon_answer.jpg" style="width: 120px; height: 120px;">
-	<img id="response" src="/flash_response.gif" style="width: 120px; height: 120px;">
-	<img id="exer" src="/flash_exer.gif" style="width: 120px; height: 120px;">
+	<img id="repeat" src="/icon_repeat.gif" style="width: 120px; height: 120px;">
+	<img id="exer" src="/flash_next.gif" style="width: 120px; height: 120px;">
 	<img id="next" src="/flash_next.gif" style="width: 100px; height: 100px;">
 </div>
 
-<div style="border: 3px double #000000;padding:3px;width:500px;" id="record_alert">
-	<p style="color: #ff0000;font-size:32px;font-weight:bold;"><blink>請錄音，結束后按[往下鍵]</blink></p>
-	<img src="/flash_record.gif" style="width: 100px; height: 100px;">
+<div id="flash_noise">
+	<img src="/flash_noise.gif" style="width: 640px; height: 480px;">
 </div>
 
 <div id="firstVideo">
 	<div id="player"></div>
 </div>
-
-<script>
-  // 1. This code loads the IFrame Player API code asynchronously.
-  var tag = document.createElement('script');
-
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  // 2. This function creates an <iframe> (and YouTube player)
-  //    after the API code downloads.
-  var player;
-  var playerTarget;
-
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '480',
-      width: '640',
-      videoId: 'BP--0Z-tmNk',
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      }
-    });
-  }
-
-  function tryNewVideo(videoID) {
-  	player = new YT.Player('player', {
-      height: '480',
-      width: '640',
-      videoId: videoID,
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      }
-    });
-  }
-
-  // 3. The API will call this function when the video player is ready.
-  function onPlayerReady(event) {
-   
-    player.loadVideoById({'videoId': 'dleOLKzcsko', 'startSeconds': 5, 'endSeconds': 35, 'suggestedQuality': 'large'});
-    // player.loadVideoById({'videoId': 'BP--0Z-tmNk'});
-    // event.target.pauseVideo();
-    $('#player').hide();
-    playerTarget = event.target;
-    event.target.playVideo();
-
-  }
-
-  // 4. The API calls this function when the player's state changes.
-  //    The function indicates that when playing a video (state=1),
-  //    the player should play for six seconds and then stop.
-  var done = false;
-  var load_now = false;
-  var video_event;
- 
-
-  function onPlayerStateChange(event) {
-  	msg = $('#user_status').html();
-
-    if (event.data == YT.PlayerState.PLAYING) {
-    	// alert('video is playing: ' + msg);
-      setTimeout(stopVideo, 30000); // set up video player time
-      load_now = true;
-      videoID = msg.split('/').shift();
-      $('#user_status').html(msg + '/playing/' + videoID);
-      // done = true;
-    } else if(event.data == YT.PlayerState.ENDED) {
-    	// alert('video play stopped: ' + msg);
-    	$('#user_status').html(msg + '/ended/' + videoID);
-
-    } else if(event.data == YT.PlayerState.UNSTARTED) {
-    	// alert('video play unstarted: ' + msg);
-    	if(load_now) {
-	    	videoID = msg.split('/').shift();
-
-	    	// $('#firstVideo').html('<div id="player"></div>');
-	    	// tryNewVideo(videoID);
-
-	    	event.target.loadVideoById({'videoId': videoID, 'startSeconds': 5, 'endSeconds': 45, 'suggestedQuality': 'large'});
-	    	event.target.pauseVideo();
-	    	load_now = false;
-	    	$('#user_status').html(msg + '/load/' + videoID);
-	    	playerTarget = event.target;
-
-	    }
-    }
-  }
-
-  function testVideo() {
-  	setTimeout(stopVideo, 10000);
-  }
-
-  function stopVideo() {
-  	msg = $('#user_status').html();
-  	$('#user_status').html(msg+'/stopVideo()');
-
-  	playerTarget.stopVideo();
-
-  	$('#player').hide();
-  	
-  	// test control handling after video end
-  	$('#green').css('opacity', 1);
-    $('#yellow').hide();
-
-    vh = $('#video_end_handle').html();
-    vv = vh.split('/');
-    in_exercise = (vv[0]=='1');
-
-    gid = vv[2];
-
-    // show alert to record (groups 1 and 2) or to answer (others)
-    if(gid[0]=='1' || gid[0]=='2') $('#record_alert').show();
-    else $('#answer_alert').show();
-
-    $('#test_item').show();
-    $('#test_group_' + vv[2]).show();
-
-    if(gid[0]=='3' || gid[0]=='4') $('#test_content_3a4').show();
-    else $('#test_content_' + vh[0]).show();
-
-    if(in_exercise) $('#answer').show(); 
-    else $('#answer').hide();
-
-    if(gid[0]=='3' || gid[0]=='4') $('#answer_for_3a4').show();
-
-    if(gid[0]=='1' || gid[0]=='2') {
-    	$('#next').show();
-    }
-    else {
-    	$('#next').hide(); // no display until the answer to the question is given
-    	$('#response').hide();
-      $('#alert_message').html('請在正確圖形處觸碰。');
-    }
-
-    $('#test_buttons').show();
-  }
-
-  function playVideo() {
-  	msg = $('#user_status').html();
-  	$('#user_status').html(msg+'/playVideo()');
-  	$('#player').show();
-  	playerTarget.playVideo();
-
-
-  }
-
-  function loadVideo(videoID) {
-  	playerTarget.loadVideoById({'videoId': videoID, 'startSeconds': 5, 'endSeconds': 45, 'suggestedQuality': 'large'});
-  	playerTarget.pauseVideo();
-  }
-
-  function load2playVideo() {
-  	// alert('to load ' + videoID + ' for video playing');
-  	playerTarget.playVideo();
-  	$('#player').show();
-  	$('#test_item').hide();
-  }
-
-</script>
 
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="answer_alert">
@@ -687,8 +485,15 @@ Intelligence Development Accessment for Children
 
 <div id="test_content_3a4">
 
-	<div id="test_for_3a4" style="width:110px">
+	<div id="test_for_3a4" style="width:110px; display:inline-block">
 		<canvas id="canvas_for_test" width="100" height="100" style="border:1px solid #000000;">
+		</canvas>
+	</div>
+	<div id="arrow_for_3a4" style="width:110px; display:inline-block">
+		<img src="/icon_right.png" style="width: 100px; height: 100px;">
+	</div>
+	<div id="exercise_for_3a4" style="width:110px; display:inline-block">
+		<canvas id="canvas_for_answer" width="100" height="100" style="border:1px solid #000000;">
 		</canvas>
 	</div>
 
@@ -696,22 +501,22 @@ Intelligence Development Accessment for Children
 		<h4 id="test_answer_group_3a4">選擇同樣圖形：</h4>
 
 		<div style="width:110px; display:inline-block;">
-			<canvas id="canvas_for_answer_1" width="100" height="100" style="border:1px solid #000000;" style="display:inline-block;">
+			<canvas id="canvas_for_answer_1" width="100" height="100" style="border:1px solid #000000;">
 			</canvas>
 		</div>
 
 		<div style="width:110px; display:inline-block;">
-			<canvas id="canvas_for_answer_2" width="100" height="100" style="border:1px solid #000000;" style="display:inline-block;">
+			<canvas id="canvas_for_answer_2" width="100" height="100" style="border:1px solid #000000;">
 			</canvas>
 		</div>
 
 		<div style="width:110px; display:inline-block;">
-			<canvas id="canvas_for_answer_3" width="100" height="100" style="border:1px solid #000000;" style="display:inline-block;">
+			<canvas id="canvas_for_answer_3" width="100" height="100" style="border:1px solid #000000;">
 			</canvas>
 		</div>
 
 		<div style="width:110px; display:inline-block;">
-			<canvas id="canvas_for_answer_4" width="100" height="100" style="border:1px solid #000000;" style="display:inline-block;">
+			<canvas id="canvas_for_answer_4" width="100" height="100" style="border:1px solid #000000;">
 			</canvas>
 		</div>
 
@@ -721,9 +526,16 @@ Intelligence Development Accessment for Children
 
 
 <div id="test_content_5">
-	<div style="border: 3px double #000000; padding:3px; width:500px;">
+	<div style="border: 3px double #000000; padding:3px; width:120px; display:inline-block;">
 		<img id="q5_img" src="/icon_yellow.png" style="width: 100px; height: 100px;">
 		<p style="color: #000000;font-size:20px;font-weight:bold;" id="q5_text">subject</p>
+	</div>
+	<div id="arrow_5" style="display:inline-block;">
+		<img src="/icon_right.png" style="width: 100px; height: 100px;">
+	</div>
+	<div id="q5_answer" style="border: 3px double #000000; padding:3px; width:120px; display:inline-block;">
+		<img id="a5_img" src="/icon_yellow.png" style="width: 100px; height: 100px;">
+		<p style="color: #000000;font-size:20px;font-weight:bold;" id="a5_text">answer</p>
 	</div>
 	<p></p>
 	<p style="color: #ff0000;font-size:28px;font-weight:bold;" id="q5_message">請從以下選出與以上題目最合適的概念</p>
@@ -772,12 +584,20 @@ Intelligence Development Accessment for Children
 
 </div>
 
+<hr>
 
-</center>
-
-
+<div>
+<button id="show_answer" class="btn btn-min btn-primary">顯示作答</button>
+</div>
 
 <div id="user_data"><% if user_signed_in? %>user_id_<%= current_user.id %><% end %></div>
+
+<div id='tester_answer_submit'>
+<% if user_signed_in? %>
+	<%= render 'tester_answer' %>
+<% end %>
+</div>
+
 <div id="user_status">
 </div>
 <div id="user_level_code"><% if user_signed_in? %><%= current_user.level %><% end %></div>
@@ -787,3 +607,6 @@ Intelligence Development Accessment for Children
 <% end %><% end %>
 </div>
 <div id="video_end_handle"></div>
+
+</center>
+

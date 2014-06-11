@@ -1,0 +1,160 @@
+<script>
+  // 1. This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // 2. This function creates an <iframe> (and YouTube player)
+  //    after the API code downloads.
+  var player;
+  var playerTarget;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '480',
+      width: '640',
+      videoId: 'BP--0Z-tmNk',
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function tryNewVideo(videoID) {
+  	player = new YT.Player('player', {
+      height: '480',
+      width: '640',
+      videoId: videoID,
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  // 3. The API will call this function when the video player is ready.
+  function onPlayerReady(event) {
+   
+    player.loadVideoById({'videoId': 'dleOLKzcsko', 'startSeconds': 5, 'endSeconds': 35, 'suggestedQuality': 'large'});
+    // player.loadVideoById({'videoId': 'BP--0Z-tmNk'});
+    event.target.pauseVideo();
+    $('#player').hide();
+    playerTarget = event.target;
+    // event.target.playVideo();
+
+  }
+
+  // 4. The API calls this function when the player's state changes.
+  //    The function indicates that when playing a video (state=1),
+  //    the player should play for six seconds and then stop.
+  var done = false;
+  var load_now = false;
+  var video_event;
+ 
+
+  function onPlayerStateChange(event) {
+  	msg = $('#user_status').html();
+
+    if (event.data == YT.PlayerState.PLAYING) {
+    	// alert('video is playing: ' + msg);
+      setTimeout(stopVideo, 30000); // set up video player time
+      load_now = true;
+      videoID = msg.split('/').shift();
+      $('#user_status').html(msg + '/playing/' + videoID);
+      // done = true;
+    } else if(event.data == YT.PlayerState.ENDED) {
+    	// alert('video play stopped: ' + msg);
+    	$('#user_status').html(msg + '/ended/' + videoID);
+
+    } else if(event.data == YT.PlayerState.UNSTARTED) {
+    	// alert('video play unstarted: ' + msg);
+    	if(load_now) {
+	    	videoID = msg.split('/').shift();
+
+	    	// $('#firstVideo').html('<div id="player"></div>');
+	    	// tryNewVideo(videoID);
+
+	    	event.target.loadVideoById({'videoId': videoID, 'startSeconds': 5, 'endSeconds': 45, 'suggestedQuality': 'large'});
+	    	event.target.pauseVideo();
+	    	load_now = false;
+	    	$('#user_status').html(msg + '/load/' + videoID);
+	    	playerTarget = event.target;
+
+	    }
+    }
+  }
+
+  function testVideo() {
+  	setTimeout(stopVideo, 10000);
+  }
+
+  function stopVideo() {
+  	msg = $('#user_status').html();
+  	$('#user_status').html(msg+'/stopVideo()');
+
+  	playerTarget.stopVideo();
+
+  	$('#player').hide();
+  	
+  	// test control handling after video end
+  	$('#green').css('opacity', 1);
+    $('#yellow').hide();
+
+    vh = $('#video_end_handle').html();
+    vv = vh.split('/');
+    in_exercise = (vv[0]=='1');
+
+    gid = vv[2];
+
+    // show alert to record (groups 1 and 2) or to answer (others)
+    if(gid[0]=='1' || gid[0]=='2') $('#record_alert').show();
+    else $('#answer_alert').show();
+
+    $('#test_item').show();
+    $('#test_group_' + vv[2]).show();
+
+    if(gid[0]=='3' || gid[0]=='4') $('#test_content_3a4').show();
+    else $('#test_content_' + vh[0]).show();
+
+    if(in_exercise) $('#answer').show(); 
+    else $('#answer').hide();
+
+    if(gid[0]=='3' || gid[0]=='4') $('#answer_for_3a4').show();
+
+    if(gid[0]=='1' || gid[0]=='2') {
+    	$('#next').show();
+    }
+    else {
+    	$('#next').hide(); // no display until the answer to the question is given
+    	$('#response').hide();
+      $('#alert_message').html('請在正確圖形處觸碰。');
+    }
+
+    $('#test_buttons').show();
+  }
+
+  function playVideo() {
+  	msg = $('#user_status').html();
+  	$('#user_status').html(msg+'/playVideo()');
+  	$('#player').show();
+  	playerTarget.playVideo();
+
+
+  }
+
+  function loadVideo(videoID) {
+  	playerTarget.loadVideoById({'videoId': videoID, 'startSeconds': 5, 'endSeconds': 45, 'suggestedQuality': 'large'});
+  	playerTarget.pauseVideo();
+  }
+
+  function load2playVideo() {
+  	// alert('to load ' + videoID + ' for video playing');
+  	playerTarget.playVideo();
+  	$('#player').show();
+  	$('#test_item').hide();
+  }
+
+</script>
