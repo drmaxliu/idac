@@ -66,31 +66,21 @@ $(document).ready(function() {
   var exer_start, exer_end;
 
   // level 1:
-  // 1b: 10, 1a: 2, 2b: 10, 2a: 2, 3b:10, 3a: 2 (overlapped with level 2: 4 problems each)
-  // 4a: 5, 4b: 5, 4c: 5
-  // 5a: 
-  var level_1x = ['1b', 1, 2, 1, 10, '1a', 1, 2, 1, 2, '2b', 1, 2, 1, 10, '2a', 1, 2, 1, 2];
-  // var level_1x = ['5a', 1, 2, 1, 2, '5b', 1, 2, 1, 2, '2b', 1, 2, 1, 10, '2a', 1, 2, 1, 2];
-  var level_1y = ['3b', 1, 2, 1, 10, '3a', 1, 2, 1, 2, '4b', 1, 2, 1, 5, '4c', 1, 2, 1, 5];
-  var level_1z = ['5a', 1, 2, 1, 14, '6', 1, 1, 1, 5];
+  var level_1x = ['1b', 1, 2, 1, 10, '2a', 1, 2, 1, 2, '2b', 1, 2, 1, 10];
+  var level_1y = ['3a', 1, 2, 1, 2, '3b', 1, 2, 1, 10, '4a', 1, 2, 1, 5, '4b', 1, 2, 6, 10];
+  var level_1z = ['4c', 1, 2, 7, 8, '5b', 1, 2, 1, 10, '5a', 1, 2, 1, 2, '6', 1, 1, 1, 5];
   var level_1 = level_1x.concat(level_1y, level_1z);
 
   // level 2:
-  // 1b: 2, 1a: 10, 2b: 2, 2a: 10, 3b:2, 3a: 10 (overlapped with level and level 3: 4 problems each)
-  // 4a: 5, 4c: 6, 4d: 6
-  // 5a: 5b: 6:
-  var level_2x = ['1b', 1, 2, 9, 10, '1a', 1, 2, 1, 10, '2b', 1, 2, 9, 10, '2a', 1, 2, 1, 10];
-  var level_2y = ['3b', 1, 2, 9, 10, '3a', 1, 2, 1, 10, '4b', 1, 2, 4, 8, '4c', 1, 2, 4, 8];
-  var level_2z = ['5a', 1, 2, 10, 20, '5b', 1, 2, 1, 3, '6', 1, 1, 3, 7];
+  var level_2x = ['1a', 1, 2, 1, 8, '1b', 1, 2, 9, 10, '2b', 1, 2, 1, 2, '2a', 1, 2, 1, 10];
+  var level_2y = ['3a', 1, 2, 1, 10, '4c', 1, 2, 1, 10, '4b', 1, 2, 9, 10];
+  var level_2z = ['5b', 1, 2, 9, 10, '5a', 1, 2, 1, 10, '6', 1, 1, 3, 7];
   var level_2 = level_2x.concat(level_2y, level_2z);
 
   // level 3
-  // 1a: 4, 1c: 10, 2a: 4, 2c: 10, 3a: 4, 3c: 10 (overlapped with level 2: 4 problems each)
-  // 4b: 5, 4c: 5, 4d: 7
-  //
-  var level_3x = ['1a', 1, 2, 7, 10, '1c', 1, 2, 1, 10, '2a', 1, 2, 7, 10, '2c', 1, 2, 1, 10];
-  var level_3y = ['3a', 1, 2, 7, 10, '3c', 1, 2, 1, 10, '4b', 1, 2, 6, 10, '4c', 1, 2, 6, 10];
-  var level_3z = ['5a', 1, 2, 18, 20, '5b', 1, 2, 1, 10, '6', 1, 1, 6, 9];
+  var level_3x = ['1c', 1, 2, 1, 6, '1a', 1, 2, 7, 10, '2a', 1, 2, 5, 6, '2c', 1, 2, 1, 10];
+  var level_3y = ['3c', 1, 2, 1, 10, '3a', 1, 2, 9, 10, '4d', 1, 2, 1, 10, '4c', 1, 2, 9, 10];
+  var level_3z = ['5a', 1, 2, 9, 20, '6', 1, 1, 6, 9];
   var level_3 = level_3x.concat(level_3y, level_3z);
 
   var level_joint = [level_1, level_2, level_3];
@@ -195,7 +185,7 @@ $(document).ready(function() {
   var q5_list_c = [["喝水", "洗手", "説話", "尿尿"], ["西瓜", "雞蛋", "茄子", "香腸"], ["苦瓜", "香瓜", "葡萄", "木瓜"], ["饅頭", "豆漿", "餃子", "麵條"]];
   
   var q5_img_e = ["rice.jpg", "banana.png", "watermelon.png", "rice.jpg"];
-  var q5_img_c1 = [["drinking_water.jpg", "wash_hands.gif", "speaking.jpg", "pee.png"], ["watermelon.png", "egg.jpg", "egg_plant.png", "grape.jpg"]];
+  var q5_img_c1 = [["drinking_water.jpg", "wash_hands.gif", "speaking.jpg", "pee.png"], ["watermelon.png", "egg.jpg", "egg_plant.png", "sausage.jpg"]];
   var q5_img_c2 = [["bitter_melon.jpg", "xiang_melon.jpg", "grape.jpg", "papaya.jpg"], ["mantou.jpg", "doujiang.jpg", "dumpling.jpg", "noodle.jpg"]];
   var q5_img_c = q5_img_c1.concat(q5_img_c2);
 
@@ -276,10 +266,10 @@ $(document).ready(function() {
   var q6_emo_e = [q6_emo_e1];
 
   var q6_emo_q1 = ["hurted.jpg", "smile.jpg", "order.png", "mad.jpg"];
-  var q6_emo_q2 = ["caring.jpg", "furious.jpg", "confused.jpg", "despise.jpg"];
+  var q6_emo_q2 = ["smile.jpg", "furious.jpg", "confused.jpg", "despise.jpg"];
   var q6_emo_q3 = ["love2.png", "sorry.jpg", "shy.png", "yarn.jpg"];
   var q6_emo_q4 = ["love3.jpg", "worry.png", "shy2.png", "mad2.png"];
-  var q6_emo_q5 = ["laugh.png", "hurted2.png", "crying.png", "shock2.jpg"];
+  var q6_emo_q5 = ["laugh.png", "hurted2.png", "crying.png", "shock.jpg"];
   var q6_emo_q6 = ["yarn.jpg", "caring.jpg", "order.png", "joy.jpg"];
   var q6_emo_q7 = ["cold.png", "love2.png", "gentle.png", "hurted.jpg"];
   var q6_emo_q8 = ["hungry.png", "angry.png", "despise.jpg", "invitation.png"];
@@ -330,7 +320,7 @@ $(document).ready(function() {
       }
     }
 
-    // xxx status = '1';
+    // status = '10'; // xxx
 
     if(status=='0') {
       exercise_mode = true;
@@ -1354,7 +1344,7 @@ $(document).ready(function() {
       ctx.beginPath();
       if(mode==0) ctx.arc(ee[1],ee[2],ee[3],0,2*Math.PI); // ee[1], ee[2]: center point, ee[3]: radius
       else if(mode==1) ctx.arc(ee[2], ee[1],ee[3],0,2*Math.PI); // clockwise + left-right swap
-      else if(mode==2) ctx.arc(ee[2],ee[1],ee[3],0,2*Math.PI); // counter-clockwise + up-down
+      else if(mode==2) ctx.arc(ee[2], ee[1],ee[3],0,2*Math.PI); // counter-clockwise + up-down
       else if(mode==3) ctx.arc(c.width - ee[2],ee[1],ee[3],0,2*Math.PI); // clockwise
       else if(mode==4) ctx.arc(ee[2],c.height-ee[1],ee[3],0,2*Math.PI); // counter-clockwise
       else ctx.arc(c.width-ee[2],c.height-ee[1],ee[3],0,2*Math.PI); // counter-clockwise + left-right swap
