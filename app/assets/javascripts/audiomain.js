@@ -13,15 +13,6 @@
    limitations under the License.
 */
 
-var video_handle;
-
-function playVid() { 
-    video_handle.play(); 
-} 
-
-function pauseVid() { 
-    video_handle.pause(); 
-} 
 
 // initialize audioContext for audio stream
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -55,10 +46,14 @@ function gotBuffers( buffers ) {
 }
 
 function doneEncoding( blob ) {
-    var ud = document.getElementById('user_data');
+    var user_id = document.getElementById('user_data').innerHTML;
+    var status = document.getElementById('user_status').innerHTML;
 
-    Recorder.setupDownload( blob, ud.innerHTML + ((recIndex<10)?"0":"") + recIndex + ".wav" );
+    // Recorder.setupDownload( blob, user_id + "_" + status + "_" + ((recIndex<10)?"0":"") + recIndex + ".wav" );
+    Recorder.setupDownload( blob, user_id + "_" + status + ".wav" );
     recIndex++;
+
+    // $('#test_buttons').show();
 }
 
 // recording controls: stop or start
@@ -107,8 +102,6 @@ function stopRecording( e ) {
   rec.classList.remove("recording");
 }
 
-
-
 // mono conversion - not being used
 function convertToMono( input ) {
     var splitter = audioContext.createChannelSplitter(2);
@@ -128,100 +121,100 @@ function cancelAnalyserUpdates() {
 
 // can disable ...
 function updateAnalysers(time) {
-    if (!analyserContext) {
-        var canvas = document.getElementById("analyser");
-        canvasWidth = canvas.width;
-        canvasHeight = canvas.height;
-        analyserContext = canvas.getContext('2d');
-    }
+  if (!analyserContext) {
+      var canvas = document.getElementById("analyser");
+      canvasWidth = canvas.width;
+      canvasHeight = canvas.height;
+      analyserContext = canvas.getContext('2d');
+  }
 
-    // analyzer draw code here
-    {
-        var SPACING = 3;
-        var BAR_WIDTH = 1;
-        var numBars = Math.round(canvasWidth / SPACING);
-        var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+  // analyzer draw code here
+  {
+      var SPACING = 3;
+      var BAR_WIDTH = 1;
+      var numBars = Math.round(canvasWidth / SPACING);
+      var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
 
-        analyserNode.getByteFrequencyData(freqByteData); 
+      analyserNode.getByteFrequencyData(freqByteData); 
 
-        analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-        analyserContext.fillStyle = '#0000ff'; // #F6D565';
-        analyserContext.lineCap = 'round';
-        var multiplier = analyserNode.frequencyBinCount / numBars;
+      analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+      analyserContext.fillStyle = '#0000ff'; // #F6D565';
+      analyserContext.lineCap = 'round';
+      var multiplier = analyserNode.frequencyBinCount / numBars;
 
-        // Draw rectangle for each frequency bin.
-        for (var i = 0; i < numBars; ++i) {
-            var magnitude = 0;
-            var offset = Math.floor( i * multiplier );
-            // gotta sum/average the block, or we miss narrow-bandwidth spikes
-            for (var j = 0; j< multiplier; j++)
-                magnitude += freqByteData[offset + j];
-            magnitude = magnitude / multiplier;
-            var magnitude2 = freqByteData[i * multiplier];
-            analyserContext.fillStyle = "hsl( " + Math.round((i*360)/numBars) + ", 100%, 50%)";
-            analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
-        }
-    }
-    
-    rafID = window.requestAnimationFrame( updateAnalysers );
+      // Draw rectangle for each frequency bin.
+      for (var i = 0; i < numBars; ++i) {
+          var magnitude = 0;
+          var offset = Math.floor( i * multiplier );
+          // gotta sum/average the block, or we miss narrow-bandwidth spikes
+          for (var j = 0; j< multiplier; j++)
+              magnitude += freqByteData[offset + j];
+          magnitude = magnitude / multiplier;
+          var magnitude2 = freqByteData[i * multiplier];
+          analyserContext.fillStyle = "hsl( " + Math.round((i*360)/numBars) + ", 100%, 50%)";
+          analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
+      }
+  }
+  
+  rafID = window.requestAnimationFrame( updateAnalysers );
 }
 
 // mono on/off - not used
 function toggleMono() {
-    if (audioInput != realAudioInput) {
-        audioInput.disconnect();
-        realAudioInput.disconnect();
-        audioInput = realAudioInput;
-    } else {
-        realAudioInput.disconnect();
-        audioInput = convertToMono( realAudioInput );
-    }
+  if (audioInput != realAudioInput) {
+      audioInput.disconnect();
+      realAudioInput.disconnect();
+      audioInput = realAudioInput;
+  } else {
+      realAudioInput.disconnect();
+      audioInput = convertToMono( realAudioInput );
+  }
 
-    audioInput.connect(inputPoint);
+  audioInput.connect(inputPoint);
 }
 
 // callback from successful obtaining the audio device
 function gotStream(stream) {
-    inputPoint = audioContext.createGain();
+  inputPoint = audioContext.createGain();
 
-    // Create an AudioNode from the stream.
-    realAudioInput = audioContext.createMediaStreamSource(stream);
-    audioInput = realAudioInput;
-    audioInput.connect(inputPoint);
+  // Create an AudioNode from the stream.
+  realAudioInput = audioContext.createMediaStreamSource(stream);
+  audioInput = realAudioInput;
+  audioInput.connect(inputPoint);
 
-    // *** disable mono *** //
-    // audioInput = convertToMono( input );
+  // *** disable mono *** //
+  // audioInput = convertToMono( input );
 
-    analyserNode = audioContext.createAnalyser();
-    analyserNode.fftSize = 2048;
-    inputPoint.connect( analyserNode );
+  analyserNode = audioContext.createAnalyser();
+  analyserNode.fftSize = 2048;
+  inputPoint.connect( analyserNode );
 
-    // set up recording
-    audioRecorder = new Recorder( inputPoint );
+  // set up recording
+  audioRecorder = new Recorder( inputPoint );
 
-    zeroGain = audioContext.createGain();
-    zeroGain.gain.value = 0.0;
-    inputPoint.connect( zeroGain );
-    zeroGain.connect( audioContext.destination );
-    updateAnalysers();
+  zeroGain = audioContext.createGain();
+  zeroGain.gain.value = 0.0;
+  inputPoint.connect( zeroGain );
+  zeroGain.connect( audioContext.destination );
+  updateAnalysers();
 }
 
 // obtain access to the audio device
 function initAudio() {
 
-        if (!navigator.getUserMedia)
-            navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-        if (!navigator.cancelAnimationFrame)
-            navigator.cancelAnimationFrame = navigator.webkitCancelAnimationFrame || navigator.mozCancelAnimationFrame;
-        if (!navigator.requestAnimationFrame)
-            navigator.requestAnimationFrame = navigator.webkitRequestAnimationFrame || navigator.mozRequestAnimationFrame;
+  if (!navigator.getUserMedia)
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+  if (!navigator.cancelAnimationFrame)
+      navigator.cancelAnimationFrame = navigator.webkitCancelAnimationFrame || navigator.mozCancelAnimationFrame;
+  if (!navigator.requestAnimationFrame)
+      navigator.requestAnimationFrame = navigator.webkitRequestAnimationFrame || navigator.mozRequestAnimationFrame;
 
-        navigator.getUserMedia({audio:true}, gotStream, function(e) {
-            alert('Error getting audio');
-            console.log(e);
-        });
+  navigator.getUserMedia({audio:true}, gotStream, function(e) {
+      alert('Error getting audio');
+      console.log(e);
+  });
 
-        video_handle = document.getElementById("video_interfere"); 
+  // video_handle = document.getElementById("video_interfere"); 
 
 
 }

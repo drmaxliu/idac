@@ -22,7 +22,8 @@ $(document).ready(function() {
 	}
 	$('#audio_recording').hide();
 	$('#record_buttons').hide();
-	$('#video_controls').hide();
+  $('#use_pc_to_record').hide();
+  $('#with_own_recorder').hide();
 
   $('#flash_noise').hide();
 
@@ -52,7 +53,6 @@ $(document).ready(function() {
   $('#user_bot_2i').css('width', "70px");
   $('#user_bot_3i').css('width', "70px");
   $('#user_level').css("width", "50px");
-
 
   var level;
   var status;
@@ -330,7 +330,7 @@ $(document).ready(function() {
       }
     }
 
-    // status = '9';
+    // xxx status = '1';
 
     if(status=='0') {
       exercise_mode = true;
@@ -401,6 +401,60 @@ $(document).ready(function() {
     }
   }
 
+  var use_pc2record = false;
+
+  var rec_method = $.cookie("record_method");
+  if(rec_method=='pc') {
+    use_pc2record = true;
+    $.cookie("record_method", "pc", {path: '/' });
+  }
+  else {
+    use_pc2record = false;
+    $.cookie("record_method", "own", {path: '/' });
+  }
+
+  if((group_id[0]=='1' || group_id[0]=='2') && use_pc2record) {
+    // init audio recording
+    // window.addEventListener('load', initAudio );
+    initAudio();
+    // $('#audio_recording').show();
+    // $('#record_buttons').show();
+
+    $('#use_pc_to_record').hide();
+    $('#with_own_recorder').show();
+  } else {
+    $('#use_pc_to_record').show();
+    $('#with_own_recorder').hide();
+
+    // $('#audio_recording').hide();
+    // $('#record_buttons').hide();
+  }
+
+  $('#use_pc_to_record').on("click", function() {
+    $('#use_pc_to_record').hide();
+    $('#with_own_recorder').show();
+    use_pc2record = true;
+
+    // $('#audio_recording').show();
+    // $('#record_buttons').show();
+
+    initAudio();
+
+    $.cookie("record_method", "pc", {path: '/' });
+  });
+
+
+  $('#with_own_recorder').on("click", function() {
+    $('#use_pc_to_record').show();
+    $('#with_own_recorder').hide();
+    use_pc2record = false;
+
+    // $('#audio_recording').hide();
+    // $('#record_buttons').hide();
+
+    $.cookie("record_method", "own", {path: '/' });
+  });
+
   var new_group = false;
   var test_done = false;
 
@@ -423,6 +477,8 @@ $(document).ready(function() {
     new_group = false;
 
     $('#record_alert').hide();
+    $('#audio_recording').hide();
+    $('#record_buttons').hide();
 
     if(jump2test) {
       jump2test = false;
@@ -508,13 +564,20 @@ $(document).ready(function() {
               current_answer = user_answer[parseInt(group_id[0])-1];
             }
 
+            // - change to hide
             // show the test structures for the current group
-            $('#test_group_' + group_id).show();
-            $('#test_description_' + group_id).show();
+            $('#test_group_' + group_id).hide();
+            $('#test_description_' + group_id).hide();
 
             // show form to save the current answers ....
             $('#show_instruction').hide();
-            $('#hide_instruction').show();
+
+            // - change to hide
+            $('#hide_instruction').hide();
+
+            // - add the following hides to force "save the answers"
+            $('#show_logout').hide();
+            $('#hide_logout').hide();
 
           }
         }
@@ -756,9 +819,13 @@ $(document).ready(function() {
         }
         is_loaded = true;
 
-        $('#user_status').html(vid + '/' + group_id + '/' + item_idx.toString());
+        $('#user_status').html(group_id + '_' + item_idx.toString());
         // loadVideo(vid);
       }
+
+
+      if(exercise_mode) $('#user_status').html(group_id + '_e_' + item_idx.toString());
+      else $('#user_status').html(group_id + '_t_' + item_idx.toString());
 
       current_answer += group_id + ':' + key + item_idx.toString() + '/';
 
@@ -784,8 +851,14 @@ $(document).ready(function() {
             if(exercise_mode) $('#answer').show();
             else $('#answer').hide();
 
-            $('#record_alert').show();
+            if(rec_method=='pc') {
+              $('#test_buttons').hide();
+              $('#record_buttons').show();
+              $('#audio_recording').show();
+            } else $('#record_alert').show();
+
             $('#answer_alert').hide();
+
 
           }, 3000); 
         } else {
@@ -857,7 +930,13 @@ $(document).ready(function() {
                 if(exercise_mode) $('#answer').show();
                 else $('#answer').hide();
 
-                $('#record_alert').show();
+                if(rec_method=='pc') {
+                  $('#test_buttons').hide();
+                  $('#record_buttons').show();
+                  $('#audio_recording').show();
+                } else $('#record_alert').show();
+
+
                 $('#answer_alert').hide();
 
               }, 15000); 
@@ -1149,6 +1228,13 @@ $(document).ready(function() {
     }
   	
   });
+
+  // turn on next audio recording is saved
+  $('#save').on("click", function() {
+    $('#test_buttons').show();
+    $('#audio_recording').hide();
+    $('#record_buttons').hide();
+  })
 
   // play the answer audio
   $('#answer').on("click", function() {

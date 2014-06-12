@@ -1,3 +1,10 @@
+<div style="text-align:right">
+<button id="use_pc_to_record" class="btn btn-min btn-danger">錄音模式：自備錄音筆</button>
+</div>
+<div style="text-align:right">
+<button id="with_own_recorder" class="btn btn-min btn-danger">錄音模式：電腦（或平板）</button>
+</div>
+
 <center>
 <h3>
 幼兒智力發展評估
@@ -9,7 +16,9 @@ Intelligence Development Accessment for Children
 聲音記憶與操作測驗，空間記憶與操作測驗，概念認知測驗，情緒認知測驗
 </h4>
 
-<p>
+<p></p>
+
+<p style="font-size:20px;font-weight:bold;">
 <span id="show_logout"><u>想要登出</u> | </span>
 <span id="hide_logout"><u>隱藏登出</u> | </span> 
 <span id="show_instruction"><u>顯示指示</u></span>
@@ -48,6 +57,8 @@ Intelligence Development Accessment for Children
 	<% end %>
 </div>
 
+<% rec_method = cookies[:record_method] %>
+
 <h3 id="test_group_1a">
 1A. 聲音記憶測驗: 
 </h3>
@@ -64,8 +75,21 @@ Intelligence Development Accessment for Children
 		<img src="/icon_green.png" style="width: 100px; height: 100px;">
 		<li>題目播完後，黃燈亮起，請等待。</li>
 		<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
-		<li>當錄音顯示時，請用自備錄音筆或錄音機，按著聽到的順序錄下你剛剛聽見的數字。</li>
-		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% if rec_method == "pc" %>
+			<li>當錄音顯示時，請按[錄音鍵]錄下你剛剛聽見的數字。。結束后，按[停止鍵]，再按[儲存件].</li>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_stop.jpg" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_save.jpg" style="width: 100px; height: 100px;">
+			</div>
+		<% else %>
+			<li>當錄音顯示時，請用自備錄音筆或錄音機，按著聽到的順序錄下你剛剛聽見的數字。</li>
+			<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% end %>
 		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
 		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
@@ -90,8 +114,21 @@ Intelligence Development Accessment for Children
 		<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
 		<li>黃燈消失后會會再次撥出題目。</li>
 		<img src="/icon_repeat.gif" style="width: 100px; height: 100px;">
-		<li>題目重復播完後，請用自備錄音筆或錄音機，按著聽到的順序錄下你剛剛聽見的數字。</li>
-		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% if rec_method == "pc" %>
+			<li>題目重復播完後，請按[錄音鍵]錄下你剛剛聽見的數字。。結束后，按[停止鍵]，再按[儲存件].</li>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_stop.jpg" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_save.jpg" style="width: 100px; height: 100px;">
+			</div>
+		<% else %>
+			<li>題目重復播完後，請用自備錄音筆或錄音機，按著聽到的順序錄下你剛剛聽見的數字。</li>
+			<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% end %>
 		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
 		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
@@ -116,8 +153,21 @@ Intelligence Development Accessment for Children
 		<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
 		<li>黃燈消失后會出現一段雜訊。</li>
 		<img src="/icon_noise.png" style="width: 120px; height: 120px;">
-		<li>雜音結束后，請用自備錄音筆或錄音機，按著聽到的順序錄下你剛剛聽見的數字。</li>
-		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% if rec_method == "pc" %>
+			<li>雜音結束後，請按[錄音鍵]錄下你剛剛聽見的數字。。結束后，按[停止鍵]，再按[儲存件].</li>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_stop.jpg" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_save.jpg" style="width: 100px; height: 100px;">
+			</div>
+		<% else %>
+			<li>雜音結束後，請用自備錄音筆或錄音機，按著聽到的順序錄下你剛剛聽見的數字。</li>
+			<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% end %>
 		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
 		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
@@ -153,8 +203,21 @@ Intelligence Development Accessment for Children
 		<li>題目播完後，黃燈亮起，請等待。</li>
 		<img src="/icon_yellow.png" style="width: 100px; height: 100px;">
 		<li style="color:#ff0000;">將聽見的數字，每兩個數字略掉後一個，然後回答。例如：聽見的數字是1,3,7,9。你要回答：1,7。</li>
-		<li>當錄音顯示時，請用自備錄音筆或錄音機，按著以上要求說出數字。</li>
-		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% if rec_method == "pc" %>
+			<li>當錄音顯示時，請按[錄音鍵]，按照要求，錄下數字。結束后，按[停止鍵]，再按[儲存件].</li>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_stop.jpg" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_save.jpg" style="width: 100px; height: 100px;">
+			</div>
+		<% else %>
+			<li>當錄音顯示時，請用自備錄音筆或錄音機，按照要求，錄下數字。</li>
+			<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% end %>
 		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
 		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
@@ -180,8 +243,21 @@ Intelligence Development Accessment for Children
 		<li>黃燈消失后會會再次撥出題目。</li>
 		<img src="/icon_repeat.gif" style="width: 100px; height: 100px;">
 		<li style="color:#ff0000;">將聽見的數字，分成前後各半的兩部反，然後先回答后半部，在再回答前半部。例如：聽見的數字是8,0,3,4,2,7。你要回答：4,2,7,8,0,3。</li>
-		<li>當錄音顯示時，請用自備錄音筆或錄音機，按著以上要求說出數字。</li>
-		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% if rec_method == "pc" %>
+			<li>當錄音顯示時，請按[錄音鍵]，按照要求，錄下數字。結束后，按[停止鍵]，再按[儲存件].</li>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_stop.jpg" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_save.jpg" style="width: 100px; height: 100px;">
+			</div>
+		<% else %>
+			<li>當錄音顯示時，請用自備錄音筆或錄音機，按照要求，錄下數字。</li>
+			<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% end %>
 		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
 		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
@@ -207,8 +283,21 @@ Intelligence Development Accessment for Children
 		<li>黃燈消失后會出現一段雜訊。</li>
 		<img src="/icon_noise.png" style="width: 120px; height: 120px;">
 		<li style="color:#ff0000;">將聽見的數字，按著次序 ，每兩個相加，再按著次序讀出。例如：聽見的數字是8,4,1,7,5,9。你要回答：12,8,14。</li>
-		<li>當錄音顯示時，請用自備錄音筆或錄音機，按著以上要求說出數字。</li>
-		<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% if rec_method == "pc" %>
+			<li>當錄音顯示時，請按[錄音鍵]，按照要求，錄下數字。結束后，按[停止鍵]，再按[儲存件].</li>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_stop.jpg" style="width: 100px; height: 100px;">
+			</div>
+			<div style="width:110px; display:inline-block">
+				<img src="/icon_save.jpg" style="width: 100px; height: 100px;">
+			</div>
+		<% else %>
+			<li>當錄音顯示時，請用自備錄音筆或錄音機，按照要求，錄下數字。</li>
+			<img src="/icon_microphone.png" style="width: 100px; height: 100px;">
+		<% end %>
 		<li>如果是練習題，題目結束後，可以按以下[答案鍵]，聼答案。</li>
 		<img src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	</ol>
@@ -444,19 +533,19 @@ Intelligence Development Accessment for Children
   Your browser does not support this audio format.
 </audio>
 
-
-<%-# recording controls -%>
-<%-#<div style="border: 3px double #000000;padding:3px;width:500px;" id="record_buttons"> -%>
-<%-#	<img id="record" src="/icon_microphone.png" style="width: 100px; height: 100px;" onclick="startRecording(this);"> -%>
-<%-#	<img id="stop" src="/icon_stop.jpg" style="width: 100px; height: 100px;" onclick="stopRecording(this);"> -%>
-<%-#	<a id="save" href="#"><img src="/icon_save.jpg" style="width: 100px; height: 100px;" onclick=""></a> -%>
-<%-# </div> -%>
-
 <h4 id="test_item">第1題</h4>
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="record_alert">
 	<p style="color: #ff0000;font-size:32px;font-weight:bold;"><blink>錄音結束后，繼續下面題目</blink></p>
 	<img src="/flash_record.gif" style="width: 100px; height: 100px;">
+</div>
+
+<div style="border: 3px double #000000;padding:3px;width:500px;" id="record_buttons">
+	<p style="color: #ff0000;font-size:20px;font-weight:bold;"><blink>請依次按[錄音鍵]錄音。按[停止鍵]結束錄音，</p>
+	<p style="color: #ff0000;font-size:20px;font-weight:bold;"><blink>再按[儲存件]完成，進入下一題。</p>
+	<img id="record" src="/icon_microphone.png" style="width: 100px; height: 100px;" onclick="startRecording(this);">
+	<img id="stop" src="/icon_stop.jpg" style="width: 100px; height: 100px;" onclick="stopRecording(this);">
+	<a id="save" href="#"><img src="/icon_save.jpg" style="width: 100px; height: 100px;" onclick=""></a>
 </div>
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="test_buttons">
@@ -466,7 +555,7 @@ Intelligence Development Accessment for Children
 	<img id="noise" src="/icon_noise.png" style="width: 100px; height: 100px;">
 	<img id="answer" src="/icon_answer.jpg" style="width: 120px; height: 120px;">
 	<img id="repeat" src="/icon_repeat.gif" style="width: 120px; height: 120px;">
-	<img id="exer" src="/flash_next.gif" style="width: 120px; height: 120px;">
+	<img id="exer" src="/flash_next.gif" style="width: 100px; height: 100px;">
 	<img id="next" src="/flash_next.gif" style="width: 100px; height: 100px;">
 </div>
 
@@ -481,6 +570,17 @@ Intelligence Development Accessment for Children
 
 <div style="border: 3px double #000000;padding:3px;width:500px;" id="answer_alert">
 	<p style="color: #ff0000;font-size:32px;font-weight:bold;" id="alert_message">請選擇答案</p>
+</div>
+
+<div id="audio_recording">
+	<div id="audio">
+		<div id="viz">
+			<h4>聲音波形</h4>
+			<canvas id="analyser" width="800" height="500"></canvas>
+			<h4>錄音波形</h4>
+			<canvas id="wavedisplay" width="800" height="500"></canvas>
+		</div>
+	</div>
 </div>
 
 <div id="test_content_3a4">
@@ -586,17 +686,17 @@ Intelligence Development Accessment for Children
 
 <hr>
 
-<div>
-<button id="show_answer" class="btn btn-min btn-primary">顯示作答</button>
-</div>
-
-<div id="user_data"><% if user_signed_in? %>user_id_<%= current_user.id %><% end %></div>
-
 <div id='tester_answer_submit'>
 <% if user_signed_in? %>
 	<%= render 'tester_answer' %>
 <% end %>
 </div>
+
+<div>
+<button id="show_answer" class="btn btn-min btn-primary">顯示作答</button>
+</div>
+
+<div id="user_data"><% if user_signed_in? %>user_id_<%= current_user.id %><% end %></div>
 
 <div id="user_status">
 </div>
