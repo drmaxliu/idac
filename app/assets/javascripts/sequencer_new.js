@@ -441,6 +441,7 @@ $(document).ready(function() {
     initAudio();
 
     $.cookie("record_method", "pc", {path: '/' });
+    rec_method = "pc";
   });
 
 
@@ -453,6 +454,7 @@ $(document).ready(function() {
     // $('#record_buttons').hide();
 
     $.cookie("record_method", "own", {path: '/' });
+    rec_method = "own";
   });
 
   var new_group = false;
