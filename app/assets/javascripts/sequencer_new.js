@@ -83,7 +83,14 @@ $(document).ready(function() {
   var level_3z = ['5a', 1, 2, 9, 20, '6', 1, 1, 6, 9];
   var level_3 = level_3x.concat(level_3y, level_3z);
 
-  var level_joint = [level_1, level_2, level_3];
+  // level 4: demo
+  var level_4x = ['1b', 1, 1, 1, 1, '1a', 2, 2, 10, 10, '2c', 1, 2, 10, 10];
+  var level_4y = ['3c', 2, 2, 9, 10, '4d', 1, 1, 9, 10];
+  var level_4z = ['5a', 1, 2, 9, 10, '6', 1, 1, 6, 9];
+  var level_4 = level_4x.concat(level_4y, level_4z);
+
+
+  var level_joint = [level_1, level_2, level_3, level_4];
   var level_selected;
 
   var video_list_1 = ['WMTlMRHSI9s', 'BP--0Z-tmNk', '2-GK492jJ2Y', 'Izq1E6b4WlQ', 'DF4TJueMBzs', 'yoO6PR1wwbg', 'dJo6NNLFNeo', '8_U5dJd-rig', 'vyaubRJ-5GA', 'tzhTaoIQPXA'];
