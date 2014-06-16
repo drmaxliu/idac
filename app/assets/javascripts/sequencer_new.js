@@ -46,6 +46,9 @@ $(document).ready(function() {
   $('#tester_answer_submit').hide();
   $('#welcome').show();
 
+  // $('#show_answer').show();
+  $('#show_answer').hide();
+
   $('#user_test_date_1i').css('width', "70px");
   $('#user_test_date_2i').css('width', "70px");
   $('#user_test_date_3i').css('width', "70px");
@@ -67,26 +70,30 @@ $(document).ready(function() {
 
   // level 1:
   var level_1x = ['1b', 1, 2, 1, 10, '2a', 1, 2, 1, 2, '2b', 1, 2, 1, 10];
-  var level_1y = ['3a', 1, 2, 1, 2, '3b', 1, 2, 1, 10, '4a', 1, 2, 1, 5, '4b', 1, 2, 6, 10];
-  var level_1z = ['4c', 1, 2, 7, 8, '5b', 1, 2, 1, 10, '5a', 1, 2, 1, 2, '6', 1, 1, 1, 5];
-  var level_1 = level_1x.concat(level_1y, level_1z);
+  var level_1y = ['3a', 1, 2, 1, 2, '3b', 1, 2, 1, 10, '4a', 1, 2, 1, 5, '4b', 1, 2, 6, 10, '4c', 1, 2, 7, 8];
+  var level_1z = ['5b', 1, 2, 1, 10, '5a', 1, 2, 1, 2, '6', 1, 1, 1, 5];
+  // var level_1 = level_1x.concat(level_1y, level_1z);
+  var level_1 = ['3b', 1, 1, 1, 10, '3c', 1, 1, 3, 4, '3a', 2, 2, 5, 6, '4a', 1, 1, 1, 5, '4b', 2, 2, 6, 10, '4d', 1, 1, 3, 4, '4c', 2, 2, 7, 8];
 
   // level 2:
   var level_2x = ['1a', 1, 2, 1, 8, '1b', 1, 2, 9, 10, '2b', 1, 2, 1, 2, '2a', 1, 2, 1, 10];
   var level_2y = ['3a', 1, 2, 1, 10, '4c', 1, 2, 1, 10, '4b', 1, 2, 9, 10];
   var level_2z = ['5b', 1, 2, 9, 10, '5a', 1, 2, 1, 10, '6', 1, 1, 3, 7];
-  var level_2 = level_2x.concat(level_2y, level_2z);
+  // var level_2 = level_2x.concat(level_2y, level_2z);
+  var level_2 = ['3a', 1, 2, 1, 10, '3c', 1, 1, 3, 4, '3b', 2, 2, 7, 8, '4c', 1, 1, 1, 10, '4d', 2, 2, 3, 4, '4b', 1, 1, 9, 10];
+
 
   // level 3
   var level_3x = ['1c', 1, 2, 1, 6, '1a', 1, 2, 7, 10, '2a', 1, 2, 5, 6, '2c', 1, 2, 1, 10];
   var level_3y = ['3c', 1, 2, 1, 10, '3a', 1, 2, 9, 10, '4d', 1, 2, 1, 10, '4c', 1, 2, 9, 10];
   var level_3z = ['5a', 1, 2, 9, 20, '6', 1, 1, 6, 9];
-  var level_3 = level_3x.concat(level_3y, level_3z);
+  // var level_3 = level_3x.concat(level_3y, level_3z);
+  var level_3 = ['3c', 1, 2, 1, 10, '3a', 1, 1, 5, 6, '3b', 2, 2, 7, 8, '4d', 1, 1, 1, 10, '4c', 2, 2, 7, 8, '4b', 1, 1, 9, 10];
 
   // level 4: demo
-  var level_4x = ['1b', 1, 1, 1, 1, '1a', 2, 2, 10, 10, '2c', 1, 2, 10, 10];
+  var level_4x = ['1b', 1, 1, 6, 7, '2c', 1, 2, 9, 10];
   var level_4y = ['3c', 2, 2, 9, 10, '4d', 1, 1, 9, 10];
-  var level_4z = ['5a', 1, 2, 9, 10, '6', 1, 1, 6, 9];
+  var level_4z = ['5a', 1, 2, 9, 10, '6', 1, 1, 6, 7];
   var level_4 = level_4x.concat(level_4y, level_4z);
 
 
@@ -299,6 +306,11 @@ $(document).ready(function() {
 
   }
 
+  // initializations
+  group_id = '00';
+  idem_idx = 0;
+  group_idx = 0;
+
   // prepare for the test
   // set up test starting point
   if($('#user_data').html()=='') {
@@ -370,6 +382,10 @@ $(document).ready(function() {
         $('#show_logout').hide();
         $('#test_start').show();
 
+        group_idx = (level_selected.length / 5) - 1;
+        item_idx = level_selected[5*group_idx+1];
+        group_id = level_selected[5*group_idx];
+
       } else {
         item_idx = level_selected[5*group_idx+1];
         group_id = level_selected[5*group_idx];
@@ -420,11 +436,13 @@ $(document).ready(function() {
     $('#use_pc_to_record').hide();
     $('#with_own_recorder').show();
   } else {
-    $('#use_pc_to_record').show();
+    $('#use_pc_to_record').hide();
     $('#with_own_recorder').hide();
+    use_pc2record = false;
+    $.cookie("record_method", "own", {path: '/' });
 
-    // $('#audio_recording').hide();
-    // $('#record_buttons').hide();
+    $('#audio_recording').hide();
+    $('#record_buttons').hide();
   }
 
   $('#use_pc_to_record').on("click", function() {
